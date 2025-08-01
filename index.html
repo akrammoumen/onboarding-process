@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>الترحيب – MOBEK MEDIA</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    body {
+      font-family: 'Cairo', 'Segoe UI', sans-serif;
+      background-color: #fdfdfc;
+      color: #1a1a1a;
+      padding: 2rem;
+      max-width: 900px;
+      margin: auto;
+      position: relative;
+      padding-top: 100px;
+      padding-bottom: 100px;
+    }
+    
+    /* شعار الوكالة */
+    .agency-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: linear-gradient(to right, #2c3e50, #1a2a38);
+      padding: 15px 5%;
+      z-index: 1000;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .agency-logo {
+      height: 45px;
+      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.3));
+    }
+    
+    .agency-name {
+      color: white;
+      font-weight: 700;
+      font-size: 1.4rem;
+      letter-spacing: 0.5px;
+    }
+    
+    .brand {
+      color: #e3ad55;
+      font-weight: bold;
+    }
+    
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.75rem;
+      color: #2c3e50;
+      text-align: center;
+      margin-top: 1.5rem;
+    }
+    
+    p {
+      font-size: 1.1rem;
+      line-height: 1.7;
+      text-align: center;
+      margin-bottom: 1.5rem;
+      color: #333;
+    }
+    
+    .card {
+      background-color: #fff;
+      border-left: 6px solid #e3ad55;
+      border-radius: 16px;
+      padding: 1.75rem;
+      margin: 2rem 0;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.07);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+    }
+    
+    .card h2 {
+      margin-top: 0;
+      color: #2c3e50;
+      font-size: 1.5rem;
+      margin-bottom: 1rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    ul, ol {
+      padding-left: 1.25rem;
+      margin: 1rem 0;
+    }
+    
+    li {
+      margin-bottom: 0.8rem;
+      line-height: 1.6;
+    }
+    
+    .highlight {
+      color: #e3ad55;
+      font-weight: 600;
+    }
+    
+    .btn-container {
+      text-align: center;
+      margin-top: 2rem;
+    }
+    
+    .btn {
+      display: inline-block;
+      background: linear-gradient(to right, #e3ad55, #d89b3f);
+      color: white;
+      font-weight: bold;
+      padding: 0.9rem 2.5rem;
+      border: none;
+      border-radius: 50px;
+      text-decoration: none;
+      font-size: 1.1rem;
+      box-shadow: 0 4px 15px rgba(227, 173, 85, 0.3);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(227, 173, 85, 0.4);
+    }
+    
+    .btn:active {
+      transform: translateY(1px);
+    }
+    
+    .btn::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to right, rgba(255,255,255,0.2), rgba(255,255,255,0));
+      transform: translateX(-100%);
+      transition: transform 0.5s ease;
+    }
+    
+    .btn:hover::after {
+      transform: translateX(100%);
+    }
+    
+    /* زر الدردشة */
+    .chat-floating {
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      z-index: 1000;
+    }
+    
+    .chat-button {
+      background: linear-gradient(to bottom, #e3ad55, #d89b3f);
+      border-radius: 50%;
+      width: 65px;
+      height: 65px;
+      border: none;
+      box-shadow: 0 6px 15px rgba(227, 173, 85, 0.4);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+      color: white;
+      font-size: 1.8rem;
+      animation: pulse 2s infinite;
+    }
+    
+    .chat-button:hover {
+      transform: scale(1.1) rotate(5deg);
+      box-shadow: 0 8px 20px rgba(227, 173, 85, 0.6);
+    }
+    
+    @keyframes pulse {
+      0% {
+        box-shadow: 0 0 0 0 rgba(227, 173, 85, 0.7);
+      }
+      70% {
+        box-shadow: 0 0 0 12px rgba(227, 173, 85, 0);
+      }
+      100% {
+        box-shadow: 0 0 0 0 rgba(227, 173, 85, 0);
+      }
+    }
+    
+    /* شريط التقدم (غير ظاهر في صفحة الترحيب) */
+    .progress-container {
+      display: none;
+    }
+    
+    /* التأكيدات المرئية */
+    .card ul li::marker {
+      color: #e3ad55;
+      font-size: 1.2em;
+    }
+    
+    /* التأكيدات المرئية */
+    .card h2 i {
+      background: linear-gradient(to right, #e3ad55, #ffcc70);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    
+    /* تصميم متجاوب */
+    @media (max-width: 768px) {
+      body {
+        padding: 1rem;
+        padding-top: 85px;
+      }
+      
+      .agency-header {
+        padding: 10px 5%;
+      }
+      
+      .agency-logo {
+        height: 35px;
+      }
+      
+      h1 {
+        font-size: 2rem;
+      }
+      
+      .card {
+        padding: 1.25rem;
+      }
+      
+      .chat-button {
+        width: 55px;
+        height: 55px;
+        font-size: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <!-- شعار الوكالة -->
+  <header class="agency-header">
+    <img src="https://i.imgur.com/7nLmM5p.png" alt="شعار MOBEK MEDIA" class="agency-logo">
+    <div class="agency-name">MOBEK MEDIA</div>
+  </header>
+
+  <h1>👋 مرحبًا بك في <span class="brand">MOBEK MEDIA</span>!</h1>
+  <p>نحن متحمسون لمساعدتك في تنمية عملك في مجال المطابخ من خلال إعلانات مدفوعة عالية الأداء. ستوجهك رحلة الإعداد هذه عبر كل ما تحتاجه للبدء - دون أي متاعب.</p>
+
+  <div class="card">
+    <h2><i class="fas fa-search"></i> ما يمكن توقعه</h2>
+    <p>إليك ما سنقوم به من أجلك:</p>
+    <ul>
+      <li>✅ إطلاق وإدارة حملاتك الإعلانية على <strong>Meta (Facebook & Instagram)</strong>.</li>
+      <li>✅ تحسين الأداء يوميًا لتقليل التكاليف وزيادة العملاء المحتملين.</li>
+      <li>✅ إبقاؤك على اطلاع دائم مع رؤى وتقارير منتظمة.</li>
+    </ul>
+    <p>تركيزنا بسيط: تحويل ميزانيتك الإعلانية إلى عملاء محتملين جيدين لتجديد المطابخ - بدون زوائد، بدون إرهاق.</p>
+  </div>
+
+  <div class="card">
+    <h2><i class="fas fa-comments"></i> التواصل</h2>
+    <p>نحن نبقى على اتصال مستمر حتى تكون دائمًا على اطلاع:</p>
+    <ul>
+      <li>🎥 <strong>فيديوين أسبوعيًا على Loom</strong> يظهران التقدم والتحديثات والخطوات التالية.</li>
+      <li>📊 <strong>تقرير أداء أسبوعي</strong> يتم تسليمه في نهاية كل أسبوع.</li>
+      <li>📞 <strong>مكالمة Zoom أسبوعية اختيارية</strong> - حدد موعدها في أي وقت لمراجعة النتائج أو طرح الأسئلة.</li>
+    </ul>
+    <p>الشفافية والاتساق هما المفتاح - وأنت دائمًا تحت السيطرة.</p>
+  </div>
+
+  <div class="card">
+    <h2><i class="fas fa-rocket"></i> عملية الإعداد</h2>
+    <p>هذه العملية تستغرق بضع دقائق فقط. سوف:</p>
+    <ol>
+      <li>1️⃣ تمنحنا حق الوصول إلى حسابات الإعلانات المطلوبة.</li>
+      <li>2️⃣ تجيب على 2-3 أسئلة حول جمهورك وأهدافك.</li>
+      <li>3️⃣ تؤكد التفاصيل الرئيسية حتى نتمكن من الانطلاق بسلاسة.</li>
+    </ol>
+    <p>سترى تقدمك أثناء تقدمك. كل شيء سريع وموجه!</p>
+  </div>
+
+  <div class="btn-container">
+    <a href="access.html" class="btn">ابدأ الآن →</a>
+  </div>
+
+  <!-- زر الدردشة العائم -->
+  <div class="chat-floating">
+    <button class="chat-button">
+      <i class="fas fa-comment-dots"></i>
+    </button>
+  </div>
+
+  <!-- Tawk.to Live Chat -->
+  <script type="text/javascript">
+    var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
+    (function() {
+      var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
+      s1.async = true;
+      s1.src = 'https://embed.tawk.to/688393fc8beeee192b5d57c/1hsjguvfr';
+      s1.charset = 'UTF-8';
+      s1.setAttribute('crossorigin', '*');
+      s0.parentNode.insertBefore(s1, s0);
+    })();
+    
+    // تفعيل الدردشة عند الضغط على الزر
+    document.querySelector('.chat-button').addEventListener('click', function() {
+      Tawk_API.toggle();
+    });
+  </script>
+</body>
+</html>

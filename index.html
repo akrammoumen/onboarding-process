@@ -1,185 +1,215 @@
 <!DOCTYPE html>
-<html lang="ar" dir="rtl">
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>الترحيب – MOBEK MEDIA</title>
+  <title>Welcome – MOBEK MEDIA</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Cairo:wght@300;400;500;600;700&display=swap');
-    
-    :root {
-      --gold: #e3ad55;
-      --gold-light: #f0c67c;
-      --gold-dark: #d89b3f;
-      --dark-blue: #2c3e50;
-      --light-bg: #f8f9fa;
-      --text-dark: #1a1a1a;
-      --text-light: #555;
-      --white: #ffffff;
-      --shadow: 0 4px 12px rgba(0,0,0,0.1);
-      --transition: all 0.3s ease;
-    }
-    
     * {
+      box-sizing: border-box;
       margin: 0;
       padding: 0;
-      box-sizing: border-box;
+    }
+    
+    :root {
+      --gold-primary: #e3ad55;
+      --gold-secondary: #d89b3f;
+      --light-blue: #a5d8ff;
+      --light-purple: #d0bfff;
+      --light-green: #b2f2bb;
+      --light-salmon: #ffd8a8;
+      --dark-text: #2c3e50;
+      --light-bg: #f8f9fa;
+      --card-bg: #ffffff;
     }
     
     body {
-      font-family: 'Cairo', 'Segoe UI', sans-serif;
-      background-color: #fdfdfc;
-      color: var(--text-dark);
+      font-family: 'Poppins', 'Segoe UI', sans-serif;
+      background: linear-gradient(135deg, #fdfdfc, #f5f7fa);
+      color: var(--dark-text);
       padding: 2rem;
       max-width: 900px;
       margin: auto;
       position: relative;
-      padding-top: 120px; /* مساحة للأعلى للشعار وشريط التقدم */
-      padding-bottom: 100px; /* مساحة للأسفل لزر الدردشة */
-      line-height: 1.7;
+      padding-top: 100px;
+      padding-bottom: 100px;
+      min-height: 100vh;
     }
     
-    /* شعار الوكالة */
-    .agency-logo {
+    /* Agency Header */
+    .agency-header {
       position: fixed;
-      top: 20px;
-      left: 20px;
-      height: 60px;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: linear-gradient(to right, #4a7b9d, #5a8aaf);
+      padding: 15px 5%;
       z-index: 1000;
-      transition: var(--transition);
-    }
-    
-    /* زر الدردشة */
-    .chat-floating {
-      position: fixed;
-      bottom: 25px;
-      right: 25px;
-      z-index: 1000;
-    }
-    
-    .chat-button {
-      background: var(--gold);
-      border-radius: 50%;
-      width: 65px;
-      height: 65px;
-      border: none;
-      box-shadow: var(--shadow);
-      cursor: pointer;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
       display: flex;
+      justify-content: space-between;
       align-items: center;
-      justify-content: center;
-      transition: var(--transition);
-      animation: pulse 2s infinite;
     }
     
-    .chat-button:hover {
-      background: var(--gold-dark);
-      transform: scale(1.1);
+    .agency-logo {
+      height: 45px;
+      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
     }
     
-    .chat-button i {
-      font-size: 28px;
-      color: var(--white);
+    .agency-name {
+      color: white;
+      font-weight: 600;
+      font-size: 1.4rem;
+      letter-spacing: 0.5px;
     }
     
-    @keyframes pulse {
-      0% { box-shadow: 0 0 0 0 rgba(227, 173, 85, 0.7); }
-      70% { box-shadow: 0 0 0 12px rgba(227, 173, 85, 0); }
-      100% { box-shadow: 0 0 0 0 rgba(227, 173, 85, 0); }
-    }
-    
-    /* تصميم الصفحة الأصلي */
     .brand {
-      color: var(--gold);
+      color: var(--gold-primary);
       font-weight: bold;
+      position: relative;
+      display: inline-block;
+    }
+    
+    .brand::after {
+      content: '';
+      position: absolute;
+      bottom: -3px;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: linear-gradient(to right, var(--gold-primary), var(--gold-secondary));
+      border-radius: 2px;
     }
     
     h1 {
       font-size: 2.5rem;
-      margin-bottom: 0.75rem;
+      margin-bottom: 1.2rem;
+      color: var(--dark-text);
       text-align: center;
-      color: var(--dark-blue);
+      margin-top: 1.5rem;
     }
     
     p {
       font-size: 1.1rem;
       line-height: 1.7;
-      margin-bottom: 1rem;
+      text-align: center;
+      margin-bottom: 1.5rem;
+      color: #555;
     }
     
     .card {
-      background-color: var(--white);
-      border-left: 6px solid var(--gold);
+      background-color: var(--card-bg);
       border-radius: 16px;
       padding: 1.75rem;
       margin: 2rem 0;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.07);
-      transition: transform 0.3s ease;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.05);
+      transition: all 0.3s ease;
+      border-top: 4px solid var(--gold-primary);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 4px;
+      background: linear-gradient(to right, var(--gold-primary), var(--gold-secondary));
+      z-index: 1;
     }
     
     .card:hover {
-      transform: translateY(-5px);
+      transform: translateY(-8px);
+      box-shadow: 0 15px 30px rgba(0,0,0,0.1);
     }
     
     .card h2 {
       margin-top: 0;
-      color: var(--dark-blue);
+      color: var(--dark-text);
       font-size: 1.5rem;
-      margin-bottom: 1rem;
+      margin-bottom: 1.5rem;
       display: flex;
       align-items: center;
-      gap: 10px;
+      gap: 12px;
     }
+    
+    .card-icon {
+      width: 45px;
+      height: 45px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin-right: 10px;
+    }
+    
+    .icon-search { background: linear-gradient(135deg, var(--light-blue), #8ac6f0); }
+    .icon-chat { background: linear-gradient(135deg, var(--light-purple), #b197fc); }
+    .icon-rocket { background: linear-gradient(135deg, var(--light-green), #69db7c); }
     
     ul, ol {
       padding-left: 1.25rem;
-      margin-bottom: 1rem;
+      margin: 1.2rem 0;
     }
     
     li {
-      margin-bottom: 0.75rem;
+      margin-bottom: 0.9rem;
+      line-height: 1.6;
+      padding-left: 10px;
       position: relative;
-      padding-left: 1.5rem;
     }
     
-    li:before {
-      content: "•";
-      color: var(--gold);
-      font-size: 1.5rem;
+    li::before {
+      content: '';
       position: absolute;
-      left: 0;
-      top: -5px;
+      left: -20px;
+      top: 10px;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background-color: var(--gold-primary);
     }
     
     .highlight {
-      color: var(--gold);
+      color: var(--gold-primary);
       font-weight: 600;
+    }
+    
+    .btn-container {
+      text-align: center;
+      margin-top: 2.5rem;
     }
     
     .btn {
       display: inline-block;
-      background: linear-gradient(135deg, var(--gold), var(--gold-dark));
-      color: var(--white);
-      font-weight: bold;
-      padding: 0.9rem 1.75rem;
+      background: linear-gradient(to right, var(--gold-primary), var(--gold-secondary));
+      color: white;
+      font-weight: 600;
+      padding: 0.9rem 2.8rem;
       border: none;
-      border-radius: 10px;
+      border-radius: 50px;
       text-decoration: none;
       font-size: 1.1rem;
-      margin-top: 2rem;
-      box-shadow: var(--shadow);
-      transition: var(--transition);
-      cursor: pointer;
-      text-align: center;
-      display: block;
-      width: fit-content;
-      margin: 2rem auto 0;
+      box-shadow: 0 4px 15px rgba(227, 173, 85, 0.3);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      letter-spacing: 0.5px;
     }
     
     .btn:hover {
       transform: translateY(-3px);
-      box-shadow: 0 6px 15px rgba(0,0,0,0.15);
+      box-shadow: 0 6px 20px rgba(227, 173, 85, 0.4);
+    }
+    
+    .btn:active {
+      transform: translateY(1px);
     }
     
     .btn i {
@@ -191,199 +221,228 @@
       transform: translateX(5px);
     }
     
-    /* شريط التقدم الجديد */
-    .progress-container {
+    /* Floating Chat Button */
+    .chat-floating {
       position: fixed;
-      top: 100px;
-      left: 0;
-      width: 100%;
-      padding: 15px 5%;
-      background: var(--dark-blue);
-      z-index: 999;
-      box-shadow: 0 4px 15px rgba(0,0,0,0.15);
+      bottom: 30px;
+      right: 30px;
+      z-index: 1000;
     }
     
-    .progress-steps {
-      display: flex;
-      justify-content: space-between;
-      padding: 0;
-      margin-bottom: 10px;
-    }
-    
-    .step {
-      list-style: none;
-      font-size: 0.9em;
-      color: rgba(255,255,255,0.7);
-      position: relative;
-      text-align: center;
-      width: 20%;
-      padding-top: 25px;
-    }
-    
-    .step:before {
-      content: "";
-      position: absolute;
-      top: -15px;
-      left: 50%;
-      transform: translateX(-50%);
-      width: 30px;
-      height: 30px;
+    .chat-button {
+      background: linear-gradient(to bottom, var(--gold-primary), var(--gold-secondary));
       border-radius: 50%;
-      background: rgba(255,255,255,0.2);
-      border: 2px solid rgba(255,255,255,0.3);
-      z-index: 2;
+      width: 70px;
+      height: 70px;
+      border: none;
+      box-shadow: 0 6px 15px rgba(227, 173, 85, 0.4);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+      color: white;
+      font-size: 1.8rem;
+      animation: pulse 2s infinite;
     }
     
-    .step.active:before {
-      background: var(--gold);
-      border-color: var(--white);
-      box-shadow: 0 0 0 5px rgba(227, 173, 85, 0.3);
+    .chat-button:hover {
+      transform: scale(1.1) rotate(5deg);
+      box-shadow: 0 8px 25px rgba(227, 173, 85, 0.6);
     }
     
-    .step.active {
-      color: var(--white);
-      font-weight: bold;
+    @keyframes pulse {
+      0% {
+        box-shadow: 0 0 0 0 rgba(227, 173, 85, 0.5);
+      }
+      70% {
+        box-shadow: 0 0 0 15px rgba(227, 173, 85, 0);
+      }
+      100% {
+        box-shadow: 0 0 0 0 rgba(227, 173, 85, 0);
+      }
     }
     
-    .progress-bar {
-      height: 8px;
-      background: rgba(255,255,255,0.1);
-      border-radius: 4px;
-      margin: 10px 0;
-      overflow: hidden;
-      position: relative;
+    /* Progress Bar (hidden on welcome page) */
+    .progress-container {
+      display: none;
     }
     
-    .progress-fill {
-      height: 100%;
-      background: linear-gradient(to right, var(--gold), var(--gold-light));
-      border-radius: 4px;
-      transition: width 0.8s cubic-bezier(0.68, -0.55, 0.27, 1.55);
-      width: 0%;
+    /* Visual enhancements */
+    .card ul li strong {
+      background: linear-gradient(transparent 70%, rgba(227, 173, 85, 0.2) 70%);
+      padding: 0 3px;
     }
     
-    /* تصميم متجاوب */
+    /* Responsive Design */
     @media (max-width: 768px) {
       body {
-        padding: 1rem;
-        padding-top: 100px;
+        padding: 1.2rem;
+        padding-top: 85px;
+        padding-bottom: 90px;
       }
       
-      h1 {
-        font-size: 2rem;
+      .agency-header {
+        padding: 12px 5%;
       }
       
       .agency-logo {
-        height: 50px;
-        top: 15px;
-        left: 15px;
+        height: 38px;
+      }
+      
+      h1 {
+        font-size: 2.1rem;
       }
       
       .card {
-        padding: 1.25rem;
+        padding: 1.5rem;
+        margin: 1.8rem 0;
       }
       
-      .progress-container {
-        padding: 10px 5%;
-      }
-      
-      .step {
-        font-size: 0.75em;
-        padding-top: 20px;
-      }
-      
-      .step:before {
-        width: 25px;
-        height: 25px;
-        top: -12px;
+      .card h2 {
+        font-size: 1.3rem;
       }
       
       .chat-button {
-        width: 55px;
-        height: 55px;
+        width: 60px;
+        height: 60px;
+        font-size: 1.6rem;
+      }
+      
+      .btn {
+        padding: 0.8rem 2rem;
+        font-size: 1rem;
       }
     }
     
-    @media (max-width: 480px) {
-      .step {
-        font-size: 0.65em;
-      }
-      
-      .step:before {
-        width: 20px;
-        height: 20px;
-        top: -10px;
-      }
-      
-      .progress-bar {
-        height: 6px;
-      }
+    /* Decorative Elements */
+    .decorative-circle {
+      position: absolute;
+      border-radius: 50%;
+      opacity: 0.1;
+      z-index: -1;
+    }
+    
+    .circle-1 {
+      width: 300px;
+      height: 300px;
+      background: var(--gold-primary);
+      top: -150px;
+      right: -150px;
+    }
+    
+    .circle-2 {
+      width: 200px;
+      height: 200px;
+      background: var(--light-blue);
+      bottom: -100px;
+      left: -100px;
+    }
+    
+    .circle-3 {
+      width: 150px;
+      height: 150px;
+      background: var(--light-purple);
+      top: 40%;
+      left: -75px;
+    }
+    
+    .decorative-dots {
+      position: absolute;
+      width: 100px;
+      height: 100px;
+      background: radial-gradient(circle, var(--gold-primary) 2px, transparent 3px);
+      background-size: 20px 20px;
+      opacity: 0.1;
+      z-index: -1;
+    }
+    
+    .dots-1 {
+      top: 20%;
+      right: 5%;
+    }
+    
+    .dots-2 {
+      bottom: 15%;
+      left: 8%;
     }
   </style>
 </head>
 <body>
-  <!-- شعار الوكالة -->
-  <img src="https://i.imgur.com/7nLmM5p.png" alt="MOBEK MEDIA Logo" class="agency-logo">
+  <!-- Decorative elements -->
+  <div class="decorative-circle circle-1"></div>
+  <div class="decorative-circle circle-2"></div>
+  <div class="decorative-circle circle-3"></div>
+  <div class="decorative-dots dots-1"></div>
+  <div class="decorative-dots dots-2"></div>
   
-  <!-- شريط التقدم -->
-  <div class="progress-container">
-    <ul class="progress-steps">
-      <li class="step active">الترحيب</li>
-      <li class="step">حقوق الوصول</li>
-      <li class="step">إستطلاع الجمهور</li>
-      <li class="step">المكالمة الإستراتيجية</li>
-      <li class="step">شكر</li>
+  <!-- Agency Header -->
+  <header class="agency-header">
+    <img src="https://i.imgur.com/7nLmM5p.png" alt="MOBEK MEDIA Logo" class="agency-logo">
+    <div class="agency-name">MOBEK MEDIA</div>
+  </header>
+
+  <h1>Welcome to <span class="brand">MOBEK MEDIA</span>!</h1>
+  <p>We're excited to help your business grow through high-performing paid ads. This setup journey will guide you through everything you need to get started—with zero hassle.</p>
+
+  <div class="card">
+    <h2>
+      <div class="card-icon icon-search">
+        <i class="fas fa-search fa-lg" style="color: white;"></i>
+      </div>
+      What to Expect
+    </h2>
+    <p>Here's what we'll handle for you:</p>
+    <ul>
+      <li>Launch and manage your campaigns on <strong>Meta (Facebook & Instagram)</strong>.</li>
+      <li>Optimize performance daily to reduce costs and increase leads.</li>
+      <li>Keep you informed with regular insights and reports.</li>
     </ul>
-    <div class="progress-bar">
-      <div class="progress-fill" style="width: 0%"></div>
-    </div>
+    <p>Our focus is simple: turning your ad budget into quality leads — no fluff, no overwhelm.</p>
   </div>
 
-  <!-- زر الدردشة -->
+  <div class="card">
+    <h2>
+      <div class="card-icon icon-chat">
+        <i class="fas fa-comments fa-lg" style="color: white;"></i>
+      </div>
+      Communication
+    </h2>
+    <p>We stay in touch consistently so you're always informed:</p>
+    <ul>
+      <li><strong>Two Loom videos per week</strong> showing progress, updates, and next steps.</li>
+      <li><strong>A weekly performance report</strong> delivered at the end of each week.</li>
+      <li><strong>Optional weekly Zoom call</strong> — schedule it anytime to review results or ask questions.</li>
+    </ul>
+    <p>Transparency and consistency are key — and you're always in control.</p>
+  </div>
+
+  <div class="card">
+    <h2>
+      <div class="card-icon icon-rocket">
+        <i class="fas fa-rocket fa-lg" style="color: white;"></i>
+      </div>
+      Setup Process
+    </h2>
+    <p>This onboarding takes just a few minutes. You'll:</p>
+    <ol>
+      <li>Grant us access to the needed ad accounts.</li>
+      <li>Answer 2–3 questions about your audience & goals.</li>
+      <li>Confirm key details so we can launch smoothly.</li>
+    </ol>
+    <p>You'll see your progress as you go. Everything is fast and guided!</p>
+  </div>
+
+  <div class="btn-container">
+    <a href="access.html" class="btn">Get Started <i class="fas fa-arrow-right"></i></a>
+  </div>
+
+  <!-- Floating Chat Button -->
   <div class="chat-floating">
     <button class="chat-button">
       <i class="fas fa-comment-dots"></i>
     </button>
   </div>
-
-  <!-- محتوى الصفحة -->
-  <h1>👋 مرحبًا بكم في <span class="brand">MOBEK MEDIA</span>!</h1>
-  <p>نحن متحمسون لمساعدتك في تطوير نشاطك التجاري في مجال المطابخ من خلال إعلانات مدفوعة عالية الأداء. سيرشدك هذا المسار الإعدادي خلال كل ما تحتاجه للبدء - بدون أي متاعب.</p>
-
-  <div class="card">
-    <h2><i class="fas fa-search"></i> ما يمكن توقعه</h2>
-    <p>إليك ما سنقوم به من أجلك:</p>
-    <ul>
-      <li>✅ إطلاق وإدارة حملاتك الإعلانية على <strong>Meta (Facebook & Instagram)</strong>.</li>
-      <li>✅ تحسين الأداء يوميًا لتقليل التكاليف وزيادة العملاء المحتملين.</li>
-      <li>✅ إبقاؤك على اطلاع دائم مع رؤى وتقارير منتظمة.</li>
-    </ul>
-    <p>هدفنا بسيط: تحويل ميزانيتك الإعلانية إلى عملاء محتملين جدد في مجال تجديد المطابخ - بدون تعقيدات أو إرباك.</p>
-  </div>
-
-  <div class="card">
-    <h2><i class="fas fa-comments"></i> التواصل</h2>
-    <p>نحن نبقى على اتصال مستمر حتى تكون على اطلاع دائم:</p>
-    <ul>
-      <li>🎥 <strong>فيديوين أسبوعيًا على Loom</strong> يوضحان التقدم والتحديثات والخطوات القادمة.</li>
-      <li>📊 <strong>تقرير أداء أسبوعي</strong> يتم تسليمه في نهاية كل أسبوع.</li>
-      <li>📞 <strong>مكالمة Zoom أسبوعية اختيارية</strong> - يمكنك جدولتها في أي وقت لمراجعة النتائج أو طرح الأسئلة.</li>
-    </ul>
-    <p>الشفافية والثبات هما المفتاح - وأنت دائمًا المسيطر.</p>
-  </div>
-
-  <div class="card">
-    <h2><i class="fas fa-rocket"></i> عملية الإعداد</h2>
-    <p>سيستغرق هذا الإعداد بضع دقائق فقط. سوف:</p>
-    <ol>
-      <li>1️⃣ تمنحنا حق الوصول إلى حسابات الإعلانات المطلوبة.</li>
-      <li>2️⃣ تجيب على 2-3 أسئلة حول جمهورك وأهدافك.</li>
-      <li>3️⃣ تؤكد التفاصيل الرئيسية حتى نتمكن من الإطلاق بسلاسة.</li>
-    </ol>
-    <p>سترى تقدمك أثناء تقدمك. كل شيء سريع وموجه!</p>
-  </div>
-
-  <a href="access.html" class="btn">ابدأ الآن <i class="fas fa-arrow-left"></i></a>
 
   <!-- Tawk.to Live Chat -->
   <script type="text/javascript">
@@ -397,14 +456,26 @@
       s0.parentNode.insertBefore(s1, s0);
     })();
     
-    // تفعيل زر الدردشة
+    // Activate chat when button is clicked
     document.querySelector('.chat-button').addEventListener('click', function() {
       Tawk_API.toggle();
     });
     
-    // تحديث شريط التقدم عند تحميل الصفحة
+    // Add subtle animation to cards on page load
     document.addEventListener('DOMContentLoaded', function() {
-      document.querySelector('.progress-fill').style.width = "0%";
+      const cards = document.querySelectorAll('.card');
+      cards.forEach((card, index) => {
+        setTimeout(() => {
+          card.style.opacity = '0';
+          card.style.transform = 'translateY(20px)';
+          card.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+          
+          setTimeout(() => {
+            card.style.opacity = '1';
+            card.style.transform = 'translateY(0)';
+          }, 100);
+        }, index * 200);
+      });
     });
   </script>
 </body>

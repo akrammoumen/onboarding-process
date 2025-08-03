@@ -1,81 +1,147 @@
-<!DOCTYPE html><html lang="en">
+<!DOCTYPE html>
+<html lang="en">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Welcome – MOBEK MEDIA</title>
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- Google Apps Script Tracking Code -->
+  <script src="https://script.google.com/macros/s/AKfycbzjQPqBJT4bv0l4Jgh5HvnuToSqiQmF3pdsmclqvlV9eXnVlmF6niWTuZpsSS_Mc4eL/exec"></script>
+
   <style>
-    /* (unchanged CSS styles) */
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #fdfdfc;
+      color: #1a1a1a;
+      padding: 2rem;
+      max-width: 900px;
+      margin: auto;
+      position: relative;
+    }
+    .brand {
+      color: #e3ad55;
+      font-weight: bold;
+    }
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.75rem;
+    }
+    p {
+      font-size: 1.1rem;
+      line-height: 1.7;
+    }
+    .card {
+      background-color: #fff;
+      border-left: 6px solid #e3ad55;
+      border-radius: 16px;
+      padding: 1.75rem;
+      margin: 2rem 0;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.07);
+    }
+    .card h2 {
+      margin-top: 0;
+      color: #333;
+      font-size: 1.5rem;
+    }
+    ul, ol {
+      padding-left: 1.25rem;
+    }
+    .highlight {
+      color: #e3ad55;
+      font-weight: 600;
+    }
+    .btn {
+      display: inline-block;
+      background-color: #e3ad55;
+      color: white;
+      font-weight: bold;
+      padding: 0.9rem 1.75rem;
+      border: none;
+      border-radius: 10px;
+      text-decoration: none;
+      font-size: 1.1rem;
+      margin-top: 2rem;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+      transition: background 0.2s ease;
+    }
+    .btn:hover {
+      background-color: #d89b3f;
+    }
+    .progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 6px;
+      background: linear-gradient(to right, #e3ad55 25%, #f0f0f0 25%);
+      z-index: 999;
+    }
+    .step-label {
+      text-align: center;
+      font-size: 0.9rem;
+      color: #555;
+      margin-top: 1rem;
+    }
   </style>
-  <!-- Tracking Script -->
-  <script async src="https://script.google.com/macros/s/AKfycbzjQPqBJT4bv0l4Jgh5HvnuToSqiQmF3pdsmclqvlV9eXnVlmF6niWTuZpsSS_Mc4eL/exec"></script>
 </head>
 <body>
-  <!-- Decorative elements -->
-  <div class="decorative-element top-left"></div>
-  <div class="decorative-element bottom-right"></div>  <!-- Agency header -->  <header class="agency-header">
-    <img src="" alt="MOBEK MEDIA Logo" class="agency-logo">
-    <div class="agency-name">MOBEK MEDIA</div>
-  </header>  <h1>👋 Welcome to <span class="brand">MOBEK MEDIA</span>!</h1>
-  <p class="subtitle">Your partner in transforming kitchen businesses with high-performing digital advertising</p>  <div class="step-indicator">
-    <div class="step-dot active"></div>
-    <div class="step-dot"></div>
-    <div class="step-dot"></div>
-    <div class="step-dot"></div>
-    <div class="step-dot"></div>
-  </div>  <!-- Content cards (unchanged) -->  <div class="btn-container">
-    <a href="access.html" class="btn">Get Started Now →</a>
-  </div>  <!-- Floating chat button -->  <div class="chat-floating">
-    <button class="chat-button" id="chatButton">
-      <i class="fas fa-comment-dots"></i>
-    </button>
-  </div>  <!-- Tawk.to Live Chat Integration (Updated ID) -->  <script type="text/javascript">
+  <div class="progress"></div>
+  <div class="step-label">Step 1 of 4</div>
+
+  <!-- Logo Placeholder -->
+  <div style="height: 60px; margin-bottom: 20px;"></div>
+
+  <h1>👋 Welcome to <span class="brand">MOBEK MEDIA</span>!</h1>
+  <p>We’re excited to help your kitchen business grow through high-performing paid ads. This setup journey will guide you through everything you need to get started—with zero hassle.</p>
+
+  <div class="card">
+    <h2>🔍 What to Expect</h2>
+    <p>Here’s what we’ll handle for you:</p>
+    <ul>
+      <li>✅ Launch and manage your campaigns on <strong>Meta (Facebook & Instagram)</strong>.</li>
+      <li>✅ Optimize performance daily to reduce costs and increase leads.</li>
+      <li>✅ Keep you informed with regular insights and reports.</li>
+    </ul>
+    <p>Our focus is simple: turning your ad budget into quality kitchen renovation leads — no fluff, no overwhelm.</p>
+  </div>
+
+  <div class="card">
+    <h2>📬 Communication</h2>
+    <p>We stay in touch consistently so you're always informed:</p>
+    <ul>
+      <li>🎥 <strong>Two Loom videos per week</strong> showing progress, updates, and next steps.</li>
+      <li>📊 <strong>A weekly performance report</strong> delivered at the end of each week.</li>
+      <li>📞 <strong>Optional weekly Zoom call</strong> — schedule it anytime to review results or ask questions.</li>
+    </ul>
+    <p>Transparency and consistency are key — and you're always in control.</p>
+  </div>
+
+  <div class="card">
+    <h2>🚀 Setup Process</h2>
+    <p>This onboarding takes just a few minutes. You’ll:</p>
+    <ol>
+      <li>1️⃣ Grant us access to the needed ad accounts.</li>
+      <li>2️⃣ Answer 2–3 questions about your audience & goals.</li>
+      <li>3️⃣ Confirm key details so we can launch smoothly.</li>
+    </ol>
+    <p>You’ll see your progress as you go. Everything is fast and guided!</p>
+  </div>
+
+  <a href="access.html" class="btn">Get Started →</a>
+
+  <!-- Start of Tawk.to Script -->
+  <script type="text/javascript">
     var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
-    (function(){
+    (function() {
       var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
       s1.async = true;
       s1.src = 'https://embed.tawk.to/688f950a8ba539192ec9c8c9/1j1odsd19';
       s1.charset = 'UTF-8';
-      s1.setAttribute('crossorigin','*');
+      s1.setAttribute('crossorigin', '*');
       s0.parentNode.insertBefore(s1, s0);
     })();
+  </script>
+  <!-- End of Tawk.to Script -->
 
-    function checkTawkReady() {
-      if (window.Tawk_API && window.Tawk_API.toggle) {
-        document.getElementById('chatButton').addEventListener('click', function() {
-          Tawk_API.toggle();
-        });
-      } else {
-        setTimeout(checkTawkReady, 500);
-      }
-    }
-
-    window.addEventListener('DOMContentLoaded', function() {
-      checkTawkReady();
-      setTimeout(function() {
-        if (!window.Tawk_API || !window.Tawk_API.toggle) {
-          document.getElementById('chatButton').addEventListener('click', function() {
-            window.open('https://tawk.to/chat/688f950a8ba539192ec9c8c9/1j1odsd19', '_blank');
-          });
-        }
-      }, 5000);
-    });
-
-    document.getElementById('chatButton').addEventListener('contextmenu', function(e) {
-      e.preventDefault();
-      if (window.Tawk_API && window.Tawk_API.toggle) {
-        alert('Tawk.to chat is ready and working properly!');
-      } else {
-        alert('Tawk.to is still loading or not available. Please wait or refresh the page.');
-      }
-    });
-  </script>  <noscript>
-    <style>
-      .chat-floating { display: none !important; }
-    </style>
-    <div class="nojs-warning" style="position:fixed; bottom:20px; right:20px; background:#ff4444; color:white; padding:10px; border-radius:5px; z-index:9999;">
-      Please enable JavaScript for live chat support.
-    </div>
-  </noscript>
 </body>
 </html>

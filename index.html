@@ -4,107 +4,144 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Welcome – MOBEK MEDIA</title>
-  
-  <!-- كود التتبع -->
-  <script async src="https://script.google.com/macros/s/AKfycbzjQPqBJT4bv0l4Jgh5HvnuToSqiQmF3pdsmclqvlV9eXnVlmF6niWTuZpsSS_Mc4eL/exec"></script>
-  
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+
+  <!-- Tracking Script -->
+  <script>
+    fetch("https://script.google.com/macros/s/AKfycbzjQPqBJT4bv0l4Jgh5HvnuToSqiQmF3pdsmclqvlV9eXnVlmF6niWTuZpsSS_Mc4eL/exec", {
+      method: "POST",
+      mode: "no-cors"
+    });
+  </script>
+
   <style>
-    /* (جميع تنسيقات CSS الأصلية كما هي بدون تغيير) */
-    /* ... نفس الـ CSS الذي أرسلته ... */
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background-color: #fdfdfc;
+      color: #1a1a1a;
+      padding: 2rem;
+      max-width: 900px;
+      margin: auto;
+      position: relative;
+    }
+    .brand {
+      color: #e3ad55;
+      font-weight: bold;
+    }
+    h1 {
+      font-size: 2.5rem;
+      margin-bottom: 0.75rem;
+    }
+    p {
+      font-size: 1.1rem;
+      line-height: 1.7;
+    }
+    .card {
+      background-color: #fff;
+      border-left: 6px solid #e3ad55;
+      border-radius: 16px;
+      padding: 1.75rem;
+      margin: 2rem 0;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.07);
+    }
+    .card h2 {
+      margin-top: 0;
+      color: #333;
+      font-size: 1.5rem;
+    }
+    ul, ol {
+      padding-left: 1.25rem;
+    }
+    .highlight {
+      color: #e3ad55;
+      font-weight: 600;
+    }
+    .btn {
+      display: inline-block;
+      background-color: #e3ad55;
+      color: white;
+      font-weight: bold;
+      padding: 0.9rem 1.75rem;
+      border: none;
+      border-radius: 10px;
+      text-decoration: none;
+      font-size: 1.1rem;
+      margin-top: 2rem;
+      box-shadow: 0 3px 10px rgba(0,0,0,0.1);
+      transition: background 0.2s ease;
+    }
+    .btn:hover {
+      background-color: #d89b3f;
+    }
+    .progress {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 6px;
+      background: linear-gradient(to right, #e3ad55 25%, #f0f0f0 25%);
+      z-index: 999;
+    }
+    .step-label {
+      text-align: center;
+      font-size: 0.9rem;
+      color: #555;
+      margin-top: 1rem;
+    }
   </style>
 </head>
 <body>
-  <!-- Decorative elements -->
-  <div class="decorative-element top-left"></div>
-  <div class="decorative-element bottom-right"></div>
-  
-  <!-- Agency header -->
-  <header class="agency-header">
-    <img src="https://i.imgur.com/LdkkKZK.png" alt="MOBEK MEDIA Logo" class="agency-logo">
-    <div class="agency-name">MOBEK MEDIA</div>
-  </header>
+  <div class="progress"></div>
+  <div class="step-label">Step 1 of 4</div>
 
   <h1>👋 Welcome to <span class="brand">MOBEK MEDIA</span>!</h1>
-  <p class="subtitle">Your partner in transforming kitchen businesses with high-performing digital advertising</p>
-  
-  <div class="step-indicator">
-    <div class="step-dot active"></div>
-    <div class="step-dot"></div>
-    <div class="step-dot"></div>
-    <div class="step-dot"></div>
-    <div class="step-dot"></div>
-  </div>
+  <p>We’re excited to help your kitchen business grow through high-performing paid ads. This setup journey will guide you through everything you need to get started—with zero hassle.</p>
 
   <div class="card">
-    <h2><i class="fas fa-search"></i> What to Expect</h2>
-    <p>We specialize in driving growth for kitchen businesses through strategic advertising solutions. Here's what we'll handle for you:</p>
+    <h2>🔍 What to Expect</h2>
+    <p>Here’s what we’ll handle for you:</p>
     <ul>
-      <li>✅ Launch and manage campaigns on <strong>Meta (Facebook & Instagram)</strong> and Google Ads</li>
-      <li>✅ Daily optimization to maximize ROI and generate quality leads</li>
-      <li>✅ Transparent reporting with actionable insights every week</li>
-      <li>✅ Creative strategy tailored to your unique brand identity</li>
+      <li>✅ Launch and manage your campaigns on <strong>Meta (Facebook & Instagram)</strong>.</li>
+      <li>✅ Optimize performance daily to reduce costs and increase leads.</li>
+      <li>✅ Keep you informed with regular insights and reports.</li>
     </ul>
-    <p>Our approach combines data-driven strategies with creative excellence to turn your ad spend into measurable business growth.</p>
+    <p>Our focus is simple: turning your ad budget into quality kitchen renovation leads — no fluff, no overwhelm.</p>
   </div>
 
   <div class="card">
-    <h2><i class="fas fa-comments"></i> Our Communication Style</h2>
-    <p>We believe in transparent and consistent communication to keep you informed and involved:</p>
+    <h2>📬 Communication</h2>
+    <p>We stay in touch consistently so you're always informed:</p>
     <ul>
-      <li>🎥 <strong>Weekly video updates</strong> showcasing campaign performance and next steps</li>
-      <li>📊 <strong>Detailed performance reports</strong> delivered every Friday</li>
-      <li>📞 <strong>Flexible consultation calls</strong> scheduled at your convenience</li>
-      <li>💬 <strong>24-hour response time</strong> for all your questions and concerns</li>
+      <li>🎥 <strong>Two Loom videos per week</strong> showing progress, updates, and next steps.</li>
+      <li>📊 <strong>A weekly performance report</strong> delivered at the end of each week.</li>
+      <li>📞 <strong>Optional weekly Zoom call</strong> — schedule it anytime to review results or ask questions.</li>
     </ul>
-    <p>You'll always be in the loop with clear insights into how your advertising investment is performing.</p>
+    <p>Transparency and consistency are key — and you're always in control.</p>
   </div>
 
   <div class="card">
-    <h2><i class="fas fa-rocket"></i> Onboarding Process</h2>
-    <p>Getting started is simple and takes just minutes. Here's our streamlined process:</p>
+    <h2>🚀 Setup Process</h2>
+    <p>This onboarding takes just a few minutes. You’ll:</p>
     <ol>
-      <li>1️⃣ Grant access to your advertising accounts and analytics</li>
-      <li>2️⃣ Complete our quick brand assessment questionnaire</li>
-      <li>3️⃣ Confirm campaign objectives and target audience</li>
-      <li>4️⃣ Review our proposed strategy and launch timeline</li>
+      <li>1️⃣ Grant us access to the needed ad accounts.</li>
+      <li>2️⃣ Answer 2–3 questions about your audience & goals.</li>
+      <li>3️⃣ Confirm key details so we can launch smoothly.</li>
     </ol>
-    <p>We'll guide you through each step, making setup effortless and efficient.</p>
+    <p>You’ll see your progress as you go. Everything is fast and guided!</p>
   </div>
 
-  <div class="btn-container">
-    <a href="access.html" class="btn">Get Started Now →</a>
-  </div>
+  <a href="access.html" class="btn">Get Started →</a>
 
-  <div class="chat-floating">
-    <button class="chat-button" id="chatButton">
-      <i class="fas fa-comment-dots"></i>
-    </button>
-  </div>
-
-  <!-- كود محادثة Tawk.to الجديد -->
-  <!--Start of Tawk.to Script-->
+  <!-- Updated Tawk.to Live Chat -->
   <script type="text/javascript">
-  var Tawk_API=Tawk_API||{}, Tawk_LoadStart=new Date();
-  (function(){
-  var s1=document.createElement("script"),s0=document.getElementsByTagName("script")[0];
-  s1.async=true;
-  s1.src='https://embed.tawk.to/688f950a8ba539192ec9c8c9/1j1odsd19';
-  s1.charset='UTF-8';
-  s1.setAttribute('crossorigin','*');
-  s0.parentNode.insertBefore(s1,s0);
-  })();
+    var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
+    (function() {
+      var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
+      s1.async = true;
+      s1.src = 'https://embed.tawk.to/688f950a8ba539192ec9c8c9/1j1odsd19';
+      s1.charset = 'UTF-8';
+      s1.setAttribute('crossorigin', '*');
+      s0.parentNode.insertBefore(s1, s0);
+    })();
   </script>
-  <!--End of Tawk.to Script-->
-
-  <!-- Fallback for JavaScript disabled -->
-  <noscript>
-    <style>
-      .chat-floating { display: none !important; }
-    </style>
-    <div class="nojs-warning" style="position:fixed; bottom:20px; right:20px; background:#ff4444; color:white; padding:10px; border-radius:5px; z-index:9999;">
-      Please enable JavaScript for live chat support.
-    </div>
-  </noscript>
 </body>
 </html>

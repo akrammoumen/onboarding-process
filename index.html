@@ -401,13 +401,6 @@
     <a href="access.html" class="btn">Get Started Now →</a>
   </div>
 
-  <!-- Floating chat button -->
-  <div class="chat-floating">
-    <button class="chat-button" id="chatButton">
-      <i class="fas fa-comment-dots"></i>
-    </button>
-  </div>
-
   <!-- Updated Tawk.to Live Chat Integration -->
   <script type="text/javascript">
     // 1. Initialize Tawk_API variables
@@ -426,10 +419,6 @@
     // 3. Function to check if Tawk.to is ready
     function checkTawkReady() {
       if (window.Tawk_API && window.Tawk_API.toggle) {
-        // Chat is ready, set up click handler
-        document.getElementById('chatButton').addEventListener('click', function() {
-          Tawk_API.toggle();
-        });
         console.log('Tawk.to chat is ready!');
       } else {
         // Chat not ready yet, check again in 500ms
@@ -440,34 +429,11 @@
     // 4. Start checking when page loads
     window.addEventListener('DOMContentLoaded', function() {
       checkTawkReady();
-      
-      // Fallback: If chat doesn't load within 5 seconds, open in new tab
-      setTimeout(function() {
-        if (!window.Tawk_API || !window.Tawk_API.toggle) {
-          document.getElementById('chatButton').addEventListener('click', function() {
-            window.open('https://tawk.to/chat/688f950a8ba539192ec9c8c9/1j1odsd19', '_blank');
-          });
-          console.log('Using fallback chat solution');
-        }
-      }, 5000);
-    });
-    
-    // 5. Diagnostic right-click on chat button
-    document.getElementById('chatButton').addEventListener('contextmenu', function(e) {
-      e.preventDefault();
-      if (window.Tawk_API && window.Tawk_API.toggle) {
-        alert('Tawk.to chat is ready and working properly!');
-      } else {
-        alert('Tawk.to is still loading or not available. Please wait or refresh the page.');
-      }
     });
   </script>
 
   <!-- Fallback for JavaScript disabled -->
   <noscript>
-    <style>
-      .chat-floating { display: none !important; }
-    </style>
     <div class="nojs-warning" style="position:fixed; bottom:20px; right:20px; background:#ff4444; color:white; padding:10px; border-radius:5px; z-index:9999;">
       Please enable JavaScript for live chat support.
     </div>

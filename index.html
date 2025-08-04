@@ -148,6 +148,13 @@
       margin-top: 15px;
     }
     
+    .error-message {
+      color: #e53e3e;
+      font-size: 0.9rem;
+      margin-top: 5px;
+      display: none;
+    }
+    
     /* Responsive design */
     @media (max-width: 768px) {
       .agency-header {
@@ -208,13 +215,14 @@
       </div>
 
       <!-- Email submission form -->
-      <form id="finalForm" class="space-y-4">
+      <form id="finalForm" action="https://formspree.io/f/xanbqzjl" method="POST" class="space-y-4">
         <div class="text-left">
           <label for="email" class="block mb-2 font-semibold text-gray-800">
             <i class="fas fa-envelope mr-2" style="color: var(--gold-primary);"></i> Your Email Address
           </label>
           <input type="email" name="email" id="email" required placeholder="you@example.com"
             class="form-input">
+          <div id="emailError" class="error-message">Please enter a valid email address</div>
           <p class="note-text">We'll send your ClickUp and Slack invites to this email</p>
         </div>
 
@@ -224,47 +232,6 @@
       </form>
     </div>
   </div>
-
-  <!-- Form submission script -->
-  <script>
-    document.getElementById("finalForm").addEventListener("submit", function(e) {
-      e.preventDefault();
-
-      const email = document.getElementById("email").value;
-      
-      // استبدال كود إرسال الإيميل بالكود الجديد
-      const scriptURL = "https://script.google.com/macros/s/AKfycbyzlx-NvdQxI9HI7EAkjuZp11X3QQdvYAU8X9agmT-9yBP7NUbEoyhP6P8uRLyZfKgN/exec";
-
-      // Show loading state
-      const submitBtn = document.querySelector("#finalForm button[type='submit']");
-      submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i> Processing...';
-      submitBtn.disabled = true;
-
-      // إضافة رؤوس لطلبات CORS
-      const headers = new Headers();
-      headers.append('Content-Type', 'application/x-www-form-urlencoded');
-      
-      fetch(scriptURL, {
-        method: "POST",
-        headers: headers,
-        body: new URLSearchParams({ 
-          "email": email,
-          "page": "strategy-call"
-        }),
-        mode: 'no-cors' // مهم لطلبات Google Script
-      })
-      .then(() => {
-        // توجيه المستخدم إلى صفحة الشكر حتى لو لم نستلم ردًا بسبب no-cors
-        window.location.href = "thankyou.html";
-      })
-      .catch(error => {
-        alert("There was an error submitting the form. Please try again or contact support.");
-        console.error("Error!", error.message);
-        submitBtn.innerHTML = '<i class="fas fa-check-circle mr-2"></i> Complete Setup';
-        submitBtn.disabled = false;
-      });
-    });
-  </script>
 
   <!-- Updated Tawk.to Integration -->
   <script type="text/javascript">
@@ -282,5 +249,52 @@
   
   <!-- Google Script Tracking Code -->
   <script src="https://script.google.com/macros/s/AKfycbzjQPqBJT4bv0l4Jgh5HvnuToSqiQmF3pdsmclqvlV9eXnVlmF6niWTuZpsSS_Mc4eL/exec"></script>
+  
+  <script>
+    document.getElementById("finalForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      
+      const email = document.getElementById("email").value;
+      const emailError = document.getElementById("emailError");
+      
+      // Validate email format
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(email)) {
+        emailError.style.display = "block";
+        return false;
+      }
+      
+      emailError.style.display = "none";
+      
+      // Show loading state
+      const submitBtn = document.querySelector("#finalForm button[type='submit']");
+      submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i> Processing...';
+      submitBtn.disabled = true;
+      
+      // Submit form using Formspree
+      const form = e.target;
+      const formData = new FormData(form);
+      
+      fetch(form.action, {
+        method: 'POST',
+        body: formData,
+        headers: {
+          'Accept': 'application/json'
+        }
+      })
+      .then(response => {
+        if (response.ok) {
+          window.location.href = "thankyou.html"; // Redirect on success
+        } else {
+          throw new Error('There was an error submitting the form. Please try again or contact support.');
+        }
+      })
+      .catch(error => {
+        alert(error.message);
+        submitBtn.innerHTML = '<i class="fas fa-check-circle mr-2"></i> Complete Setup';
+        submitBtn.disabled = false;
+      });
+    });
+  </script>
 </body>
 </html>

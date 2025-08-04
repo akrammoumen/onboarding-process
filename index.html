@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Thank You | MOBEK MEDIA</title>
+  <title>Step 4: Book Your Strategy Call | MOBEK MEDIA</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
@@ -16,221 +16,268 @@
       --light-cream: #f8f5f0;
     }
     
-    /* Animation */
-    @keyframes fadeIn {
-      from { opacity: 0; transform: translateY(20px); }
-      to { opacity: 1; transform: translateY(0); }
-    }
-    
-    @keyframes float {
-      0% { transform: translateY(0px); }
-      50% { transform: translateY(-15px); }
-      100% { transform: translateY(0px); }
-    }
-    
-    .animate-float {
-      animation: float 3s ease-in-out infinite;
-    }
-    
-    .animate-fade {
-      animation: fadeIn 1s ease-out forwards;
-    }
-    
-    /* Chat button */
-    .chat-floating {
+    /* Agency header */
+    .agency-header {
       position: fixed;
-      bottom: 30px;
-      right: 30px;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: linear-gradient(135deg, var(--deep-teal), #144d63);
+      padding: 15px 5%;
       z-index: 1000;
-    }
-    
-    .chat-button {
-      background: linear-gradient(135deg, var(--gold-primary), var(--gold-secondary));
-      border-radius: 50%;
-      width: 70px;
-      height: 70px;
-      border: none;
-      box-shadow: 0 8px 20px rgba(227, 173, 85, 0.45);
-      cursor: pointer;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
       display: flex;
+      justify-content: space-between;
       align-items: center;
-      justify-content: center;
-      transition: all 0.3s ease;
+    }
+    
+    .agency-logo {
+      height: 45px;
+      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+    }
+    
+    .agency-name {
       color: white;
-      font-size: 1.9rem;
+      font-weight: 700;
+      font-size: 1.5rem;
+      letter-spacing: 0.5px;
     }
     
-    .chat-button:hover {
-      transform: scale(1.1) rotate(5deg);
-      box-shadow: 0 10px 25px rgba(227, 173, 85, 0.65);
+    /* Progress bar */
+    .progress-container {
+      position: fixed;
+      top: 80px;
+      left: 0;
+      width: 100%;
+      background: linear-gradient(135deg, var(--deep-teal), #144d63);
+      padding: 15px 0;
+      z-index: 999;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
     }
     
-    /* Confetti effect */
-    .confetti {
+    .progress-steps {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      padding: 0 20px;
+    }
+    
+    .step {
+      color: rgba(255,255,255,0.7);
+      font-weight: 500;
+      position: relative;
+      padding-bottom: 5px;
+    }
+    
+    .step.active {
+      color: white;
+      font-weight: 700;
+    }
+    
+    .step.active::after {
+      content: '';
       position: absolute;
-      width: 10px;
-      height: 10px;
-      background-color: var(--gold-primary);
-      opacity: 0;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: var(--gold-primary);
+      border-radius: 3px;
+    }
+    
+    /* Main content */
+    .main-content {
+      margin-top: 140px;
+      margin-bottom: 100px;
+    }
+    
+    .form-container {
+      max-width: 600px;
+      width: 100%;
+      background: white;
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    }
+    
+    .form-title {
+      color: var(--gold-primary);
+      font-size: 2rem;
+      margin-bottom: 10px;
+    }
+    
+    .form-description {
+      color: var(--dark-charcoal);
+      margin-bottom: 30px;
+    }
+    
+    .form-input {
+      width: 100%;
+      padding: 15px;
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      transition: all 0.3s ease;
+    }
+    
+    .form-input:focus {
+      border-color: var(--gold-primary);
+      box-shadow: 0 0 0 3px rgba(227, 173, 85, 0.3);
+    }
+    
+    .submit-btn {
+      background: linear-gradient(135deg, var(--gold-primary), var(--gold-secondary));
+      color: var(--dark-charcoal);
+      font-weight: bold;
+      padding: 15px 30px;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(227, 173, 85, 0.3);
+      transition: all 0.3s ease;
+      width: 100%;
+      border: none;
+      cursor: pointer;
+    }
+    
+    .submit-btn:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(227, 173, 85, 0.4);
+    }
+    
+    .note-text {
+      color: #6b7280;
+      font-size: 0.9rem;
+      margin-top: 15px;
     }
     
     /* Responsive design */
     @media (max-width: 768px) {
-      .chat-button {
-        width: 60px;
-        height: 60px;
-        font-size: 1.6rem;
+      .agency-header {
+        padding: 10px 5%;
+      }
+      
+      .agency-logo {
+        height: 35px;
+      }
+      
+      .progress-steps {
+        gap: 15px;
+        font-size: 0.9rem;
+      }
+      
+      .main-content {
+        margin-top: 120px;
+        padding: 20px;
+      }
+      
+      .form-container {
+        padding: 20px;
+      }
+      
+      .form-title {
+        font-size: 1.8rem;
       }
     }
   </style>
 </head>
-<body class="bg-gradient-to-b from-yellow-50 to-white min-h-screen flex items-center justify-center p-6">
+<body class="bg-gray-50">
   <!-- Agency header -->
-  <header class="agency-header fixed top-0 left-0 w-full bg-gradient-to-r from-teal-700 to-teal-900 py-4 px-5% shadow-md z-50 flex justify-between items-center">
-    <img src="https://i.imgur.com/7nLmM5p.png" alt="MOBEK MEDIA Logo" class="h-12">
-    <div class="text-white font-bold text-xl">MOBEK MEDIA</div>
+  <header class="agency-header">
+    <img src="https://i.imgur.com/7nLmM5p.png" alt="MOBEK MEDIA Logo" class="agency-logo">
+    <div class="agency-name">MOBEK MEDIA</div>
   </header>
 
+  <!-- Progress bar -->
+  <div class="progress-container">
+    <div class="progress-steps">
+      <div class="step">Welcome</div>
+      <div class="step">Access</div>
+      <div class="step">Audience</div>
+      <div class="step active">Strategy</div>
+      <div class="step">Thank You</div>
+    </div>
+  </div>
+
   <!-- Main content -->
-  <div class="max-w-xl w-full bg-white p-10 rounded-2xl shadow-xl text-center space-y-6 border border-gray-100 animate-fade relative overflow-hidden">
-    <!-- Confetti elements -->
-    <div id="confetti-container" class="absolute top-0 left-0 w-full h-full pointer-events-none"></div>
-    
-    <!-- Animated Checkmark -->
-    <div class="mx-auto w-24 h-24 bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-full flex items-center justify-center text-white text-4xl shadow-lg animate-float">
-      <i class="fas fa-check"></i>
-    </div>
-    
-    <!-- Heading -->
-    <h1 class="text-4xl font-bold text-gray-900">
-      <span class="text-transparent bg-clip-text bg-gradient-to-r from-yellow-500 to-yellow-700">
-        You're All Set!
-      </span>
-    </h1>
-    
-    <!-- Thank You Text -->
-    <p class="text-xl text-gray-700 font-medium">
-      Thank you for completing your onboarding with 
-      <span class="font-bold text-yellow-600">MOBEK MEDIA</span>
-    </p>
-    
-    <!-- Success Message -->
-    <div class="bg-yellow-50 border-l-4 border-yellow-500 p-4 text-left rounded-r-lg">
-      <p class="text-gray-800">
-        <i class="fas fa-rocket text-yellow-600 mr-2"></i>
-        <strong>Next steps:</strong> We're preparing your campaign setup and will contact you shortly via Slack and ClickUp.
-      </p>
-    </div>
-    
-    <!-- Celebration Message -->
-    <div class="flex items-center justify-center space-x-2 text-yellow-600">
-      <i class="fas fa-sparkles"></i>
-      <p class="font-medium">Your marketing success journey begins now!</p>
-      <i class="fas fa-sparkles"></i>
-    </div>
-    
-    <!-- Team Signature -->
-    <div class="pt-4 border-t border-gray-100">
-      <p class="text-gray-500 text-sm">
-        <i class="fas fa-heart text-yellow-500"></i> The MOBEK MEDIA Team
-      </p>
+  <div class="main-content flex items-center justify-center p-6">
+    <div class="form-container text-center space-y-6">
+      <h1 class="form-title">📞 Book Your Strategy Call</h1>
+      <p class="form-description">Let's discuss your goals and make sure everything is ready to launch!</p>
+
+      <!-- Calendly iframe -->
+      <div class="calendly-container">
+        <iframe src="https://calendly.com/extramoumen/strategy-session" class="w-full h-96 rounded-xl shadow" frameborder="0"></iframe>
+      </div>
+
+      <!-- Email submission form -->
+      <form id="finalForm" class="space-y-4">
+        <div class="text-left">
+          <label for="email" class="block mb-2 font-semibold text-gray-800">
+            <i class="fas fa-envelope mr-2" style="color: var(--gold-primary);"></i> Your Email Address
+          </label>
+          <input type="email" name="email" id="email" required placeholder="you@example.com"
+            class="form-input">
+          <p class="note-text">We'll send your ClickUp and Slack invites to this email</p>
+        </div>
+
+        <button type="submit" class="submit-btn">
+          <i class="fas fa-check-circle mr-2"></i> Complete Setup
+        </button>
+      </form>
     </div>
   </div>
 
-  <!-- Floating chat button -->
-  <div class="chat-floating">
-    <button class="chat-button" id="chatButton">
-      <i class="fas fa-comment-dots"></i>
-    </button>
-  </div>
-
-  <!-- Enhanced Tawk.to Integration -->
+  <!-- Updated Tawk.to Integration -->
   <script type="text/javascript">
-    // Initialize Tawk_API variables
     var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
     
-    // Load Tawk.to script
     (function(){
       var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
       s1.async = true;
-      s1.src = 'https://embed.tawk.to/688393fc8beeee192b5d57c7/default';
+      s1.src = 'https://embed.tawk.to/688f950a8ba539192ec9c8c9/1j1odsd19';
       s1.charset = 'UTF-8';
       s1.setAttribute('crossorigin','*');
       s0.parentNode.insertBefore(s1, s0);
     })();
-    
-    // Function to check if Tawk.to is ready
-    function checkTawkReady() {
-      if (window.Tawk_API && window.Tawk_API.toggle) {
-        document.getElementById('chatButton').addEventListener('click', function() {
-          Tawk_API.toggle();
-        });
-      } else {
-        setTimeout(checkTawkReady, 500);
-      }
-    }
-    
-    // Start checking when page loads
-    window.addEventListener('DOMContentLoaded', function() {
-      checkTawkReady();
-      
-      // Fallback: If chat doesn't load within 5 seconds, open in new tab
-      setTimeout(function() {
-        if (!window.Tawk_API || !window.Tawk_API.toggle) {
-          document.getElementById('chatButton').addEventListener('click', function() {
-            window.open('https://tawk.to/chat/688393fc8beeee192b5d57c7/default', '_blank');
-          });
-        }
-      }, 5000);
-      
-      // Create confetti effect
-      createConfetti();
-    });
-    
-    // Confetti effect function
-    function createConfetti() {
-      const container = document.getElementById('confetti-container');
-      const colors = ['#e3ad55', '#d89b3f', '#f8c762', '#ffd700'];
-      
-      for (let i = 0; i < 50; i++) {
-        const confetti = document.createElement('div');
-        confetti.className = 'confetti';
-        confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
-        confetti.style.left = Math.random() * 100 + 'vw';
-        confetti.style.top = -10 + 'px';
-        confetti.style.transform = 'rotate(' + Math.random() * 360 + 'deg)';
-        
-        container.appendChild(confetti);
-        
-        const animationDuration = Math.random() * 3 + 2;
-        
-        confetti.style.animation = `
-          drop ${animationDuration}s linear ${Math.random() * 2}s forwards,
-          fade ${animationDuration}s linear ${Math.random() * 2}s forwards
-        `;
-        
-        // Remove confetti after animation
-        setTimeout(() => {
-          confetti.remove();
-        }, animationDuration * 1000);
-      }
-    }
-    
-    // Add CSS for confetti animation
-    const style = document.createElement('style');
-    style.textContent = `
-      @keyframes drop {
-        100% {
-          top: 100vh;
-        }
-      }
-      @keyframes fade {
-        0% { opacity: 1; }
-        80% { opacity: 1; }
-        100% { opacity: 0; }
-      }
-    `;
-    document.head.appendChild(style);
   </script>
+
+  <!-- Form submission script with NEW email script -->
+  <script>
+    document.getElementById("finalForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+
+      const email = document.getElementById("email").value;
+      
+      // NEW email script URL
+      const scriptURL = "https://script.google.com/macros/s/AKfycbyzlx-NvdQxI9HI7EAkjuZp11X3QQdvYAU8X9agmT-9yBP7NUbEoyhP6P8uRLyZfKgN/exec";
+
+      // Show loading state
+      const submitBtn = document.querySelector("#finalForm button[type='submit']");
+      submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i> Processing...';
+      submitBtn.disabled = true;
+
+      fetch(scriptURL, {
+        method: "POST",
+        body: new URLSearchParams({ 
+          "email": email,
+          "page": "strategy-call"
+        })
+      })
+      .then(response => {
+        if (response.ok) {
+          window.location.href = "thankyou.html"; // Redirect on success
+        } else {
+          throw new Error('Network response was not ok');
+        }
+      })
+      .catch(error => {
+        alert("There was an error submitting the form. Please try again or contact support.");
+        console.error("Error!", error.message);
+        submitBtn.innerHTML = '<i class="fas fa-check-circle mr-2"></i> Complete Setup';
+        submitBtn.disabled = false;
+      });
+    });
+  </script>
+  
+  <!-- Google Script Tracking Code -->
+  <script src="https://script.google.com/macros/s/AKfycbzjQPqBJT4bv0l4Jgh5HvnuToSqiQmF3pdsmclqvlV9eXnVlmF6niWTuZpsSS_Mc4eL/exec"></script>
 </body>
 </html>

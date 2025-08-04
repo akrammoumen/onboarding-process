@@ -225,28 +225,14 @@
     </div>
   </div>
 
-  <!-- Updated Tawk.to Integration -->
-  <script type="text/javascript">
-    var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
-    
-    (function(){
-      var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
-      s1.async = true;
-      s1.src = 'https://embed.tawk.to/688f950a8ba539192ec9c8c9/1j1odsd19';
-      s1.charset = 'UTF-8';
-      s1.setAttribute('crossorigin','*');
-      s0.parentNode.insertBefore(s1, s0);
-    })();
-  </script>
-
-  <!-- Form submission script with NEW email script -->
+  <!-- Form submission script -->
   <script>
     document.getElementById("finalForm").addEventListener("submit", function(e) {
       e.preventDefault();
 
       const email = document.getElementById("email").value;
       
-      // NEW email script URL
+      // استبدال كود إرسال الإيميل بالكود الجديد
       const scriptURL = "https://script.google.com/macros/s/AKfycbyzlx-NvdQxI9HI7EAkjuZp11X3QQdvYAU8X9agmT-9yBP7NUbEoyhP6P8uRLyZfKgN/exec";
 
       // Show loading state
@@ -275,6 +261,20 @@
         submitBtn.disabled = false;
       });
     });
+  </script>
+
+  <!-- Updated Tawk.to Integration -->
+  <script type="text/javascript">
+    var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
+    
+    (function(){
+      var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
+      s1.async = true;
+      s1.src = 'https://embed.tawk.to/688f950a8ba539192ec9c8c9/1j1odsd19';
+      s1.charset = 'UTF-8';
+      s1.setAttribute('crossorigin','*');
+      s0.parentNode.insertBefore(s1, s0);
+    })();
   </script>
   
   <!-- Google Script Tracking Code -->

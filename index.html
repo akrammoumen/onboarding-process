@@ -1,230 +1,236 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Audience Survey | MOBEK MEDIA</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-      :root {
-        --gold-primary: #e3ad55;
-        --gold-secondary: #d89b3f;
-        --deep-teal: #1a5f7a;
-        --light-teal: #2d8da8;
-        --dark-charcoal: #1f2937;
-        --light-cream: #f8f5f0;
-      }
-      
-      /* Agency header */
-      .agency-header {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        background: linear-gradient(135deg, var(--deep-teal), #144d63);
-        padding: 15px 5%;
-        z-index: 1000;
-        box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-      }
-      
-      .agency-logo {
-        height: 45px;
-        filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
-      }
-      
-      .agency-name {
-        color: white;
-        font-weight: 700;
-        font-size: 1.5rem;
-        letter-spacing: 0.5px;
-      }
-      
-      /* Progress bar */
-      .progress-container {
-        position: fixed;
-        top: 80px;
-        left: 0;
-        width: 100%;
-        background: linear-gradient(135deg, var(--deep-teal), #144d63);
-        padding: 15px 0;
-        z-index: 999;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-      }
-      
-      .progress-steps {
-        display: flex;
-        justify-content: center;
-        gap: 30px;
-        padding: 0 20px;
-      }
-      
-      .step {
-        color: rgba(255,255,255,0.7);
-        font-weight: 500;
-        position: relative;
-        padding-bottom: 5px;
-      }
-      
-      .step.active {
-        color: white;
-        font-weight: 700;
-      }
-      
-      .step.active::after {
-        content: '';
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        height: 3px;
-        background: var(--gold-primary);
-        border-radius: 3px;
-      }
-      
-      /* Form styles */
-      .form-container {
-        margin-top: 140px;
-        margin-bottom: 100px;
-      }
-      
-      .form-input {
-        border: 1px solid #e2e8f0;
-        border-radius: 12px;
-        padding: 16px;
-        transition: all 0.3s ease;
-      }
-      
-      .form-input:focus {
-        border-color: var(--gold-primary);
-        box-shadow: 0 0 0 3px rgba(227, 173, 85, 0.3);
-      }
-      
-      .btn-primary {
-        background: linear-gradient(135deg, var(--gold-primary), var(--gold-secondary));
-        color: var(--dark-charcoal);
-        font-weight: bold;
-        padding: 12px 24px;
-        border-radius: 12px;
-        box-shadow: 0 4px 15px rgba(227, 173, 85, 0.3);
-        transition: all 0.3s ease;
-      }
-      
-      .btn-primary:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 6px 20px rgba(227, 173, 85, 0.4);
-      }
-      
-      /* Responsive design */
-      @media (max-width: 768px) {
-        .agency-header {
-          padding: 10px 5%;
-        }
-        
-        .agency-logo {
-          height: 35px;
-        }
-        
-        .progress-steps {
-          gap: 15px;
-          font-size: 0.9rem;
-        }
-        
-        .form-container {
-          margin-top: 120px;
-          padding: 20px;
-        }
-      }
-    </style>
-  </head>
-  <body class="bg-gray-50 min-h-screen">
-    <!-- Agency header -->
-    <header class="agency-header">
-      <img src="https://i.imgur.com/7nLmM5p.png" alt="MOBEK MEDIA Logo" class="agency-logo">
-      <div class="agency-name">MOBEK MEDIA</div>
-    </header>
-
-    <!-- Progress bar -->
-    <div class="progress-container">
-      <div class="progress-steps">
-        <div class="step">Welcome</div>
-        <div class="step">Access</div>
-        <div class="step active">Audience</div>
-        <div class="step">Strategy</div>
-        <div class="step">Thank You</div>
-      </div>
-    </div>
-
-    <!-- Main content -->
-    <div class="form-container max-w-3xl w-full bg-white p-8 rounded-2xl shadow-xl border border-gray-200 mx-auto">
-      <h1 class="text-3xl font-bold mb-6 text-center text-gray-900">🎯 Your Ideal Audience</h1>
-      <p class="text-center mb-8 text-gray-600">Help us understand who we should target in your ads for better results.</p>
-
-      <form action="https://formspree.io/f/xanbqzjl" method="POST" class="space-y-6">
-        <!-- Question 1 -->
-        <div>
-          <label for="ideal-client" class="block text-lg font-semibold mb-2 text-gray-800">
-            <i class="fas fa-user-check mr-2" style="color: var(--gold-primary);"></i> Describe your ideal client
-          </label>
-          <textarea id="ideal-client" name="ideal-client" rows="4" class="form-input w-full" placeholder="Example: New homeowners who care about quality and design..."></textarea>
-        </div>
-
-        <!-- Question 2 -->
-        <div>
-          <label for="not-ideal-client" class="block text-lg font-semibold mb-2 text-gray-800">
-            <i class="fas fa-user-times mr-2" style="color: var(--gold-primary);"></i> Who is not the right client for you?
-          </label>
-          <textarea id="not-ideal-client" name="not-ideal-client" rows="4" class="form-input w-full" placeholder="Example: Someone looking for the cheapest option in a rush..."></textarea>
-        </div>
-
-        <!-- Question 3 -->
-        <div>
-          <label for="common-traits" class="block text-lg font-semibold mb-2 text-gray-800">
-            <i class="fas fa-users mr-2" style="color: var(--gold-primary);"></i> What traits do your current clients have in common?
-          </label>
-          <textarea id="common-traits" name="common-traits" rows="4" class="form-input w-full" placeholder="Example: They come from referrals, prefer quality, live in suburbs..."></textarea>
-        </div>
-
-        <!-- Submit Button -->
-        <div class="text-center pt-4">
-          <button type="submit" class="btn-primary">
-            <i class="fas fa-paper-plane mr-2"></i> Submit Answers
-          </button>
-        </div>
-      </form>
-
-      <!-- Navigation Buttons -->
-      <div class="flex justify-between items-center mt-8">
-        <a href="access.html" class="btn-primary">
-          <i class="fas fa-arrow-left mr-2"></i> Back
-        </a>
-        <a href="expectations.html" class="btn-primary">
-          Next <i class="fas fa-arrow-right ml-2"></i>
-        </a>
-      </div>
-    </div>
-
-    <!-- Google Sheets Progress Tracking -->
-    <iframe src="https://script.google.com/macros/s/AKfycbxpPQihYzSLjXcfgCnu-iOyFWU6aFkwPkF708lXi892KZ2e26U7oD7L_LCMPcKmQ0at/exec?page=audience" style="display: none;"></iframe>
-
-    <!-- Updated Tawk.to Integration -->
-    <script type="text/javascript">
-      var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
-      
-      (function(){
-        var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
-        s1.async = true;
-        s1.src = 'https://embed.tawk.to/688f950a8ba539192ec9c8c9/1j1odsd19';
-        s1.charset = 'UTF-8';
-        s1.setAttribute('crossorigin','*');
-        s0.parentNode.insertBefore(s1, s0);
-      })();
-    </script>
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Thank You | MOBEK MEDIA</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --gold-primary: #e3ad55;
+      --gold-secondary: #d89b3f;
+      --deep-teal: #1a5f7a;
+      --light-teal: #2d8da8;
+      --dark-charcoal: #1f2937;
+      --light-cream: #f8f5f0;
+    }
     
-    <!-- Google Script Tracking Code -->
-    <script src="https://script.google.com/macros/s/AKfycbzjQPqBJT4bv0l4Jgh5HvnuToSqiQmF3pdsmclqvlV9eXnVlmF6niWTuZpsSS_Mc4eL/exec"></script>
-  </body>
+    /* Animation */
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-15px); }
+      100% { transform: translateY(0px); }
+    }
+    
+    .animate-float {
+      animation: float 3s ease-in-out infinite;
+    }
+    
+    .animate-fade {
+      animation: fadeIn 1s ease-out forwards;
+    }
+    
+    /* Chat button */
+    .chat-floating {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      z-index: 1000;
+    }
+    
+    .chat-button {
+      background: linear-gradient(135deg, var(--gold-primary), var(--gold-secondary));
+      border-radius: 50%;
+      width: 70px;
+      height: 70px;
+      border: none;
+      box-shadow: 0 8px 20px rgba(227, 173, 85, 0.45);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+      color: white;
+      font-size: 1.9rem;
+    }
+    
+    .chat-button:hover {
+      transform: scale(1.1) rotate(5deg);
+      box-shadow: 0 10px 25px rgba(227, 173, 85, 0.65);
+    }
+    
+    /* Confetti effect */
+    .confetti {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background-color: var(--gold-primary);
+      opacity: 0;
+    }
+    
+    /* Responsive design */
+    @media (max-width: 768px) {
+      .chat-button {
+        width: 60px;
+        height: 60px;
+        font-size: 1.6rem;
+      }
+    }
+  </style>
+</head>
+<body class="bg-gradient-to-b from-yellow-50 to-white min-h-screen flex items-center justify-center p-6">
+  <!-- Agency header -->
+  <header class="agency-header fixed top-0 left-0 w-full bg-gradient-to-r from-teal-700 to-teal-900 py-4 px-5% shadow-md z-50 flex justify-between items-center">
+    <img src="https://i.imgur.com/7nLmM5p.png" alt="MOBEK MEDIA Logo" class="h-12">
+    <div class="text-white font-bold text-xl">MOBEK MEDIA</div>
+  </header>
+
+  <!-- Main content -->
+  <div class="max-w-xl w-full bg-white p-10 rounded-2xl shadow-xl text-center space-y-6 border border-gray-100 animate-fade relative overflow-hidden">
+    <!-- Confetti elements -->
+    <div id="confetti-container" class="absolute top-0 left-0 w-full h-full pointer-events-none"></div>
+    
+    <!-- Animated Checkmark -->
+    <div class="mx-auto w-24 h-24 bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-full flex items-center justify-center text-white text-4xl shadow-lg animate-float">
+      <i class="fas fa-check"></i>
+    </div>
+    
+    <!-- Heading -->
+    <h1 class="text-4xl font-bold text-gray-900">
+      <span class="text-transparent bg-clip-text bg-gradient-to-r from-yellow-500 to-yellow-700">
+        You're All Set!
+      </span>
+    </h1>
+    
+    <!-- Thank You Text -->
+    <p class="text-xl text-gray-700 font-medium">
+      Thank you for completing your onboarding with 
+      <span class="font-bold text-yellow-600">MOBEK MEDIA</span>
+    </p>
+    
+    <!-- Success Message -->
+    <div class="bg-yellow-50 border-l-4 border-yellow-500 p-4 text-left rounded-r-lg">
+      <p class="text-gray-800">
+        <i class="fas fa-rocket text-yellow-600 mr-2"></i>
+        <strong>Next steps:</strong> We're preparing your campaign setup and will contact you shortly via Slack and ClickUp.
+      </p>
+    </div>
+    
+    <!-- Celebration Message -->
+    <div class="flex items-center justify-center space-x-2 text-yellow-600">
+      <i class="fas fa-sparkles"></i>
+      <p class="font-medium">Your marketing success journey begins now!</p>
+      <i class="fas fa-sparkles"></i>
+    </div>
+    
+    <!-- Team Signature -->
+    <div class="pt-4 border-t border-gray-100">
+      <p class="text-gray-500 text-sm">
+        <i class="fas fa-heart text-yellow-500"></i> The MOBEK MEDIA Team
+      </p>
+    </div>
+  </div>
+
+  <!-- Floating chat button -->
+  <div class="chat-floating">
+    <button class="chat-button" id="chatButton">
+      <i class="fas fa-comment-dots"></i>
+    </button>
+  </div>
+
+  <!-- Enhanced Tawk.to Integration -->
+  <script type="text/javascript">
+    // Initialize Tawk_API variables
+    var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
+    
+    // Load Tawk.to script
+    (function(){
+      var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
+      s1.async = true;
+      s1.src = 'https://embed.tawk.to/688393fc8beeee192b5d57c7/default';
+      s1.charset = 'UTF-8';
+      s1.setAttribute('crossorigin','*');
+      s0.parentNode.insertBefore(s1, s0);
+    })();
+    
+    // Function to check if Tawk.to is ready
+    function checkTawkReady() {
+      if (window.Tawk_API && window.Tawk_API.toggle) {
+        document.getElementById('chatButton').addEventListener('click', function() {
+          Tawk_API.toggle();
+        });
+      } else {
+        setTimeout(checkTawkReady, 500);
+      }
+    }
+    
+    // Start checking when page loads
+    window.addEventListener('DOMContentLoaded', function() {
+      checkTawkReady();
+      
+      // Fallback: If chat doesn't load within 5 seconds, open in new tab
+      setTimeout(function() {
+        if (!window.Tawk_API || !window.Tawk_API.toggle) {
+          document.getElementById('chatButton').addEventListener('click', function() {
+            window.open('https://tawk.to/chat/688393fc8beeee192b5d57c7/default', '_blank');
+          });
+        }
+      }, 5000);
+      
+      // Create confetti effect
+      createConfetti();
+    });
+    
+    // Confetti effect function
+    function createConfetti() {
+      const container = document.getElementById('confetti-container');
+      const colors = ['#e3ad55', '#d89b3f', '#f8c762', '#ffd700'];
+      
+      for (let i = 0; i < 50; i++) {
+        const confetti = document.createElement('div');
+        confetti.className = 'confetti';
+        confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+        confetti.style.left = Math.random() * 100 + 'vw';
+        confetti.style.top = -10 + 'px';
+        confetti.style.transform = 'rotate(' + Math.random() * 360 + 'deg)';
+        
+        container.appendChild(confetti);
+        
+        const animationDuration = Math.random() * 3 + 2;
+        
+        confetti.style.animation = `
+          drop ${animationDuration}s linear ${Math.random() * 2}s forwards,
+          fade ${animationDuration}s linear ${Math.random() * 2}s forwards
+        `;
+        
+        // Remove confetti after animation
+        setTimeout(() => {
+          confetti.remove();
+        }, animationDuration * 1000);
+      }
+    }
+    
+    // Add CSS for confetti animation
+    const style = document.createElement('style');
+    style.textContent = `
+      @keyframes drop {
+        100% {
+          top: 100vh;
+        }
+      }
+      @keyframes fade {
+        0% { opacity: 1; }
+        80% { opacity: 1; }
+        100% { opacity: 0; }
+      }
+    `;
+    document.head.appendChild(style);
+  </script>
+</body>
 </html>

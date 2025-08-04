@@ -36,35 +36,6 @@
       animation: fadeIn 1s ease-out forwards;
     }
     
-    /* Chat button */
-    .chat-floating {
-      position: fixed;
-      bottom: 30px;
-      right: 30px;
-      z-index: 1000;
-    }
-    
-    .chat-button {
-      background: linear-gradient(135deg, var(--gold-primary), var(--gold-secondary));
-      border-radius: 50%;
-      width: 70px;
-      height: 70px;
-      border: none;
-      box-shadow: 0 8px 20px rgba(227, 173, 85, 0.45);
-      cursor: pointer;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      transition: all 0.3s ease;
-      color: white;
-      font-size: 1.9rem;
-    }
-    
-    .chat-button:hover {
-      transform: scale(1.1) rotate(5deg);
-      box-shadow: 0 10px 25px rgba(227, 173, 85, 0.65);
-    }
-    
     /* Confetti effect */
     .confetti {
       position: absolute;
@@ -74,21 +45,39 @@
       opacity: 0;
     }
     
-    /* Responsive design */
-    @media (max-width: 768px) {
-      .chat-button {
-        width: 60px;
-        height: 60px;
-        font-size: 1.6rem;
-      }
+    /* Agency header */
+    .agency-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: linear-gradient(135deg, var(--deep-teal), #144d63);
+      padding: 15px 5%;
+      z-index: 1000;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .agency-logo {
+      height: 45px;
+      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+    }
+    
+    .agency-name {
+      color: white;
+      font-weight: 700;
+      font-size: 1.5rem;
+      letter-spacing: 0.5px;
     }
   </style>
 </head>
 <body class="bg-gradient-to-b from-yellow-50 to-white min-h-screen flex items-center justify-center p-6">
   <!-- Agency header -->
-  <header class="agency-header fixed top-0 left-0 w-full bg-gradient-to-r from-teal-700 to-teal-900 py-4 px-5% shadow-md z-50 flex justify-between items-center">
-    <img src="https://i.imgur.com/7nLmM5p.png" alt="MOBEK MEDIA Logo" class="h-12">
-    <div class="text-white font-bold text-xl">MOBEK MEDIA</div>
+  <header class="agency-header">
+    <img src="https://i.imgur.com/7nLmM5p.png" alt="MOBEK MEDIA Logo" class="agency-logo">
+    <div class="agency-name">MOBEK MEDIA</div>
   </header>
 
   <!-- Main content -->
@@ -137,57 +126,25 @@
     </div>
   </div>
 
-  <!-- Floating chat button -->
-  <div class="chat-floating">
-    <button class="chat-button" id="chatButton">
-      <i class="fas fa-comment-dots"></i>
-    </button>
-  </div>
-
-  <!-- Enhanced Tawk.to Integration -->
+  <!-- Updated Tawk.to Integration -->
   <script type="text/javascript">
-    // Initialize Tawk_API variables
     var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
     
-    // Load Tawk.to script
     (function(){
       var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
       s1.async = true;
-      s1.src = 'https://embed.tawk.to/688393fc8beeee192b5d57c7/default';
+      s1.src = 'https://embed.tawk.to/688f950a8ba539192ec9c8c9/1j1odsd19';
       s1.charset = 'UTF-8';
       s1.setAttribute('crossorigin','*');
       s0.parentNode.insertBefore(s1, s0);
     })();
-    
-    // Function to check if Tawk.to is ready
-    function checkTawkReady() {
-      if (window.Tawk_API && window.Tawk_API.toggle) {
-        document.getElementById('chatButton').addEventListener('click', function() {
-          Tawk_API.toggle();
-        });
-      } else {
-        setTimeout(checkTawkReady, 500);
-      }
-    }
-    
-    // Start checking when page loads
-    window.addEventListener('DOMContentLoaded', function() {
-      checkTawkReady();
-      
-      // Fallback: If chat doesn't load within 5 seconds, open in new tab
-      setTimeout(function() {
-        if (!window.Tawk_API || !window.Tawk_API.toggle) {
-          document.getElementById('chatButton').addEventListener('click', function() {
-            window.open('https://tawk.to/chat/688393fc8beeee192b5d57c7/default', '_blank');
-          });
-        }
-      }, 5000);
-      
-      // Create confetti effect
-      createConfetti();
-    });
-    
-    // Confetti effect function
+  </script>
+  
+  <!-- Google Script Tracking Code -->
+  <script src="https://script.google.com/macros/s/AKfycbzjQPqBJT4bv0l4Jgh5HvnuToSqiQmF3pdsmclqvlV9eXnVlmF6niWTuZpsSS_Mc4eL/exec"></script>
+  
+  <script>
+    // Create confetti effect
     function createConfetti() {
       const container = document.getElementById('confetti-container');
       const colors = ['#e3ad55', '#d89b3f', '#f8c762', '#ffd700'];
@@ -231,6 +188,11 @@
       }
     `;
     document.head.appendChild(style);
+    
+    // Run confetti animation when page loads
+    window.addEventListener('DOMContentLoaded', function() {
+      createConfetti();
+    });
   </script>
 </body>
 </html>

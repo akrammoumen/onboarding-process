@@ -1,5 +1,417 @@
-<button onclick="document.getElementById('image1').style.display='block'">
-  📸 عرض شرح بالصور
-</button>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Access Setup - MOBEK MEDIA</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --gold-primary: #e3ad55;
+      --gold-secondary: #d89b3f;
+      --deep-teal: #1a5f7a;
+      --light-teal: #2d8da8;
+      --dark-charcoal: #1f2937;
+      --light-cream: #f8f5f0;
+      --pure-white: #ffffff;
+      --soft-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    }
+    
+    html {
+      scroll-behavior: smooth;
+    }
+    
+    body {
+      font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+      max-width: 900px;
+      margin: auto;
+      padding: 20px;
+      background: var(--light-cream);
+      color: var(--dark-charcoal);
+      padding-top: 100px;
+      padding-bottom: 100px;
+    }
+    
+    /* Agency header */
+    .agency-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: linear-gradient(135deg, var(--deep-teal), #144d63);
+      padding: 15px 5%;
+      z-index: 1000;
+      box-shadow: var(--soft-shadow);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .agency-logo {
+      height: 45px;
+      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+    }
+    
+    .agency-name {
+      color: var(--pure-white);
+      font-weight: 700;
+      font-size: 1.5rem;
+      letter-spacing: 0.5px;
+    }
+    
+    h1 {
+      text-align: center;
+      color: var(--deep-teal);
+      margin-bottom: 30px;
+      font-size: 2.2rem;
+    }
+    
+    .card {
+      background: var(--pure-white);
+      border-left: 4px solid var(--gold-primary);
+      padding: 25px;
+      border-radius: 10px;
+      margin-bottom: 30px;
+      box-shadow: var(--soft-shadow);
+      transition: transform 0.3s ease;
+    }
+    
+    .card:hover {
+      transform: translateY(-5px);
+    }
+    
+    .card h2 {
+      color: var(--deep-teal);
+      margin-top: 0;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .card h2 i {
+      color: var(--gold-primary);
+    }
+    
+    .copy-input {
+      width: 200px;
+      margin-right: 10px;
+      padding: 8px 12px;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+    }
+    
+    .copy-btn {
+      cursor: pointer;
+      background: var(--gold-primary);
+      color: var(--dark-charcoal);
+      border: none;
+      padding: 8px 15px;
+      border-radius: 6px;
+      font-weight: bold;
+      transition: all 0.3s ease;
+    }
+    
+    .copy-btn:hover {
+      background: var(--gold-secondary);
+      transform: translateY(-2px);
+    }
+    
+    .step-link {
+      display: inline-block;
+      margin-top: 10px;
+      background: linear-gradient(135deg, var(--gold-primary), var(--gold-secondary));
+      color: var(--dark-charcoal);
+      padding: 12px 20px;
+      border-radius: 8px;
+      font-weight: bold;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 10px rgba(227, 173, 85, 0.3);
+    }
+    
+    .step-link:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 15px rgba(227, 173, 85, 0.4);
+    }
+    
+    .video-btn {
+      margin-top: 8px;
+      background: var(--deep-teal);
+      color: white;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      transition: all 0.3s ease;
+    }
+    
+    .video-btn:hover {
+      background: var(--light-teal);
+      transform: translateY(-2px);
+    }
+    
+    .popup {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw; height: 100vh;
+      background-color: rgba(0, 0, 0, 0.7);
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+    
+    .popup-content {
+      background: white;
+      padding: 10px;
+      border-radius: 10px;
+      width: 90%;
+      max-width: 700px;
+      position: relative;
+    }
+    
+    .popup-content iframe {
+      width: 100%;
+      height: 400px;
+      border-radius: 10px;
+    }
+    
+    .close-btn {
+      position: absolute;
+      top: -15px;
+      right: -15px;
+      background: var(--gold-primary);
+      border: none;
+      color: var(--dark-charcoal);
+      font-weight: bold;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
+    
+    .nav-buttons {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 40px;
+    }
+    
+    .nav-buttons a {
+      background: linear-gradient(135deg, var(--gold-primary), var(--gold-secondary));
+      color: var(--dark-charcoal);
+      border: none;
+      padding: 12px 25px;
+      font-weight: bold;
+      border-radius: 8px;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 10px rgba(227, 173, 85, 0.3);
+    }
+    
+    .nav-buttons a:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 15px rgba(227, 173, 85, 0.4);
+    }
+    
+    /* Progress bar */
+    .progress-container {
+      position: fixed;
+      top: 80px;
+      left: 0;
+      width: 100%;
+      background: linear-gradient(135deg, var(--deep-teal), #144d63);
+      padding: 15px 0;
+      z-index: 999;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+    
+    .progress-steps {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      padding: 0 20px;
+    }
+    
+    .step {
+      color: rgba(255,255,255,0.7);
+      font-weight: 500;
+      position: relative;
+      padding-bottom: 5px;
+    }
+    
+    .step.active {
+      color: white;
+      font-weight: 700;
+    }
+    
+    .step.active::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: var(--gold-primary);
+      border-radius: 3px;
+    }
+    
+    /* Responsive design */
+    @media (max-width: 768px) {
+      body {
+        padding: 15px;
+        padding-top: 90px;
+      }
+      
+      .agency-header {
+        padding: 10px 5%;
+      }
+      
+      .agency-logo {
+        height: 35px;
+      }
+      
+      h1 {
+        font-size: 1.8rem;
+      }
+      
+      .progress-steps {
+        gap: 15px;
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+</head>
+<body>
 
-<img id="image1" src="images/step1-partner-access.png" style="display:none; max-width:100%; margin-top:10px;" alt="شرح خطوة الشراكة">
+  <!-- Agency header -->
+  <header class="agency-header">
+    <img src="https://i.imgur.com/7nLmM5p.png" alt="MOBEK MEDIA Logo" class="agency-logo">
+    <div class="agency-name">MOBEK MEDIA</div>
+  </header>
+
+  <!-- Progress bar -->
+  <div class="progress-container">
+    <div class="progress-steps">
+      <div class="step">Welcome</div>
+      <div class="step active">Access</div>
+      <div class="step">Audience</div>
+      <div class="step">Strategy</div>
+      <div class="step">Thank You</div>
+    </div>
+  </div>
+
+  <h1>Grant Us Access in Just a Few Steps</h1>
+
+  <!-- Meta Access -->
+  <div class="card">
+    <h2><i class="fab fa-facebook-square"></i> Meta Access</h2>
+
+    <!-- Step 1 -->
+    <p><strong>1. Add us to your Business Manager:</strong></p>
+    <input id="metaID" class="copy-input" value="123456789012345" readonly>
+    <button class="copy-btn" onclick="copyToClipboard('metaID')">📋 Copy ID</button><br>
+    <a class="step-link" href="https://business.facebook.com/settings/partners" target="_blank">Go to Business Manager</a>
+    <button class="video-btn" onclick="openPopup('https://www.loom.com/embed/business-manager-guide')"><i class="fas fa-play"></i> Watch Explanation</button>
+
+    <!-- Step 2 -->
+    <p style="margin-top: 25px;"><strong>2. Grant access to your Facebook Page:</strong></p>
+    <a class="step-link" href="https://business.facebook.com/settings/pages" target="_blank">Page Settings</a>
+    <button class="video-btn" onclick="openPopup('https://www.loom.com/embed/page-access-guide')"><i class="fas fa-play"></i> Watch Explanation</button>
+
+    <!-- Step 3 -->
+    <p style="margin-top: 25px;"><strong>3. Grant access to your Ad Account:</strong></p>
+    <a class="step-link" href="https://business.facebook.com/settings/ad-accounts" target="_blank">Ad Account Settings</a>
+    <button class="video-btn" onclick="openPopup('https://www.loom.com/embed/ad-account-access')"><i class="fas fa-play"></i> Watch Explanation</button>
+
+    <!-- Step 4 -->
+    <p style="margin-top: 25px;"><strong>4. Pixel Access:</strong></p>
+    <a class="step-link" href="https://business.facebook.com/events_manager" target="_blank">Go to Events Manager</a>
+    <button class="video-btn" onclick="openPopup('https://www.loom.com/embed/pixel-guide')"><i class="fas fa-play"></i> Watch Pixel Setup</button>
+  </div>
+
+  <!-- Website Access -->
+  <div class="card">
+    <h2><i class="fas fa-globe"></i> Website & Landing Pages</h2>
+    <p>Please grant us access to your website or landing page platform.</p>
+    <button class="video-btn" onclick="openPopup('https://www.loom.com/embed/website-access-guide')"><i class="fas fa-play"></i> Watch Website Access</button>
+
+    <p><strong>Select your platform:</strong></p>
+    <a class="step-link" href="https://wordpress.com/" target="_blank">WordPress</a>
+    <a class="step-link" href="https://webflow.com/dashboard" target="_blank">Webflow</a>
+    <a class="step-link" href="https://unbounce.com/" target="_blank">Unbounce</a>
+    <a class="step-link" href="https://www.wix.com/dashboard" target="_blank">Wix</a>
+    <a class="step-link" href="https://www.shopify.com/admin" target="_blank">Shopify</a>
+
+    <p style="margin-top: 15px;">Alternatively, you can email access details to:</p>
+    <strong>akram@mobekmedia.site</strong>
+  </div>
+
+  <!-- Navigation Buttons -->
+  <div class="nav-buttons">
+    <a href="index.html"><i class="fas fa-arrow-left"></i> Previous</a>
+    <a href="audience.html">Next <i class="fas fa-arrow-right"></i></a>
+  </div>
+
+  <!-- Video Popup -->
+  <div id="videoPopup" class="popup" onclick="closePopup()">
+    <div class="popup-content" onclick="event.stopPropagation()">
+      <button class="close-btn" onclick="closePopup()">✕</button>
+      <iframe id="popupFrame" src="" allowfullscreen></iframe>
+    </div>
+  </div>
+
+  <script>
+    function copyToClipboard(id) {
+      const copyText = document.getElementById(id);
+      navigator.clipboard.writeText(copyText.value);
+      
+      // Show feedback
+      const btn = document.querySelector(`#${id}`).nextElementSibling;
+      btn.innerHTML = '✓ Copied!';
+      setTimeout(() => {
+        btn.innerHTML = '📋 Copy ID';
+      }, 2000);
+    }
+
+    function openPopup(url) {
+      const popup = document.getElementById('videoPopup');
+      const frame = document.getElementById('popupFrame');
+      frame.src = url;
+      popup.style.display = 'flex';
+      document.body.style.overflow = 'hidden';
+    }
+
+    function closePopup() {
+      const popup = document.getElementById('videoPopup');
+      const frame = document.getElementById('popupFrame');
+      frame.src = '';
+      popup.style.display = 'none';
+      document.body.style.overflow = 'auto';
+    }
+  </script>
+
+  <!-- Updated Tawk.to Live Chat Integration -->
+  <script type="text/javascript">
+    var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
+    
+    (function(){
+      var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
+      s1.async = true;
+      s1.src = 'https://embed.tawk.to/688f950a8ba539192ec9c8c9/1j1odsd19';
+      s1.charset = 'UTF-8';
+      s1.setAttribute('crossorigin','*');
+      s0.parentNode.insertBefore(s1, s0);
+    })();
+  </script>
+
+  <!-- Google Script Tracking Code -->
+  <script src="https://script.google.com/macros/s/AKfycbzjQPqBJT4bv0l4Jgh5HvnuToSqiQmF3pdsmclqvlV9eXnVlmF6niWTuZpsSS_Mc4eL/exec"></script>
+</body>
+</html>

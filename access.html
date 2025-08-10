@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Access Setup - MOBEK MEDIA</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --gold-primary: #e3ad55;
+      --gold-secondary: #d89b3f;
+      --deep-teal: #1a5f7a;
+      --light-teal: #2d8da8;
+      --dark-charcoal: #1f2937;
+      --light-cream: #f8f5f0;
+      --pure-white: #ffffff;
+      --soft-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+      max-width: 900px;
+      margin: auto;
+      padding: 20px;
+      background: var(--light-cream);
+      color: var(--dark-charcoal);
+      padding-top: 100px;
+      padding-bottom: 100px;
+    }
+
+    /* Agency header */
+    .agency-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: linear-gradient(135deg, var(--deep-teal), #144d63);
+      padding: 15px 5%;
+      z-index: 1000;
+      box-shadow: var(--soft-shadow);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .agency-logo {
+      height: 50px;
+      border: 3px solid var(--gold-primary);
+      border-radius: 50%;
+      padding: 3px;
+      background: white;
+    }
+
+    .agency-name {
+      color: var(--pure-white);
+      font-weight: 700;
+      font-size: 1.5rem;
+      letter-spacing: 0.5px;
+    }
+
+    h1 {
+      text-align: center;
+      color: var(--deep-teal);
+      margin-bottom: 30px;
+      font-size: 2.2rem;
+    }
+
+    .card {
+      background: var(--pure-white);
+      border-left: 4px solid var(--gold-primary);
+      padding: 25px;
+      border-radius: 10px;
+      margin-bottom: 30px;
+      box-shadow: var(--soft-shadow);
+      transition: transform 0.3s ease;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
+    }
+
+    .card h2 {
+      color: var(--deep-teal);
+      margin-top: 0;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+
+    .card h2 i {
+      color: var(--gold-primary);
+    }
+
+    .copy-input {
+      width: 200px;
+      margin-right: 10px;
+      padding: 8px 12px;
+      border: 1px solid #ddd;
+      border-radius: 6px;
+    }
+
+    .copy-btn {
+      cursor: pointer;
+      background: var(--gold-primary);
+      color: var(--dark-charcoal);
+      border: none;
+      padding: 8px 15px;
+      border-radius: 6px;
+      font-weight: bold;
+      transition: all 0.3s ease;
+    }
+
+    .copy-btn:hover {
+      background: var(--gold-secondary);
+      transform: translateY(-2px);
+    }
+
+    .step-link {
+      display: inline-block;
+      margin-top: 10px;
+      background: linear-gradient(135deg, var(--gold-primary), var(--gold-secondary));
+      color: var(--dark-charcoal);
+      padding: 12px 20px;
+      border-radius: 8px;
+      font-weight: bold;
+      text-decoration: none;
+      transition: all 0.3s ease;
+      box-shadow: 0 4px 10px rgba(227, 173, 85, 0.3);
+    }
+
+    .step-link:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 15px rgba(227, 173, 85, 0.4);
+    }
+
+    .image-btn {
+      margin-top: 8px;
+      background: var(--deep-teal);
+      color: white;
+      padding: 10px 15px;
+      border: none;
+      border-radius: 8px;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 5px;
+      transition: all 0.3s ease;
+    }
+
+    .image-btn:hover {
+      background: var(--light-teal);
+      transform: translateY(-2px);
+    }
+
+    .popup {
+      display: none;
+      position: fixed;
+      top: 0; left: 0;
+      width: 100vw; height: 100vh;
+      background-color: rgba(0, 0, 0, 0.7);
+      justify-content: center;
+      align-items: center;
+      z-index: 1000;
+    }
+
+    .popup-content {
+      background: white;
+      padding: 10px;
+      border-radius: 10px;
+      width: 90%;
+      max-width: 700px;
+      position: relative;
+    }
+
+    .popup-content img {
+      width: 100%;
+      border-radius: 10px;
+    }
+
+    .close-btn {
+      position: absolute;
+      top: -15px;
+      right: -15px;
+      background: var(--gold-primary);
+      border: none;
+      color: var(--dark-charcoal);
+      font-weight: bold;
+      width: 30px;
+      height: 30px;
+      border-radius: 50%;
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    }
+
+    /* Responsive */
+    @media (max-width: 768px) {
+      body {
+        padding: 15px;
+        padding-top: 90px;
+      }
+      .agency-logo {
+        height: 40px;
+      }
+      h1 {
+        font-size: 1.8rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Agency header -->
+  <header class="agency-header">
+    <img src="mobek_agency.png" alt="MOBEK MEDIA Logo" class="agency-logo">
+    <div class="agency-name">MOBEK MEDIA</div>
+  </header>
+
+  <h1>Grant Us Access in Just a Few Steps</h1>
+
+  <!-- Example Step -->
+  <div class="card">
+    <h2><i class="fas fa-globe"></i> Website & Landing Pages</h2>
+    <p>Please grant us access to your website or landing page platform.</p>
+    <button class="image-btn" onclick="openImage('website.png')"><i class="fas fa-image"></i> View Guide</button>
+    <p><strong>Email us your access details:</strong></p>
+    <input id="emailAddress" class="copy-input" value="akram@mobekmedia.site" readonly>
+    <button class="copy-btn" onclick="copyToClipboard('emailAddress')">📋 Copy Email</button>
+  </div>
+
+  <!-- Popup for images -->
+  <div id="imagePopup" class="popup" onclick="closeImage()">
+    <div class="popup-content" onclick="event.stopPropagation()">
+      <button class="close-btn" onclick="closeImage()">✕</button>
+      <img id="popupImg" src="" alt="Guide Image">
+    </div>
+  </div>
+
+  <script>
+    function copyToClipboard(id) {
+      const copyText = document.getElementById(id);
+      navigator.clipboard.writeText(copyText.value);
+      const btn = copyText.nextElementSibling;
+      btn.innerHTML = '✓ Copied!';
+      setTimeout(() => { btn.innerHTML = '📋 Copy Email'; }, 2000);
+    }
+    function openImage(src) {
+      document.getElementById('popupImg').src = src;
+      document.getElementById('imagePopup').style.display = 'flex';
+    }
+    function closeImage() {
+      document.getElementById('popupImg').src = '';
+      document.getElementById('imagePopup').style.display = 'none';
+    }
+  </script>
+
+</body>
+</html>

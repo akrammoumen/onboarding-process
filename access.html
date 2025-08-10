@@ -23,7 +23,7 @@
       padding: 20px;
       background: var(--light-cream);
       color: var(--dark-charcoal);
-      padding-top: 100px;
+      padding-top: 140px; /* زيادة المسافة من الأعلى */
       padding-bottom: 100px;
     }
     .agency-header {
@@ -36,11 +36,12 @@
       z-index: 1000;
       box-shadow: var(--soft-shadow);
       display: flex;
-      justify-content: space-between;
+      justify-content: flex-start;
       align-items: center;
+      gap: 15px;
     }
     .agency-logo {
-      height: 45px;
+      height: 50px;
       border: 3px solid var(--gold-primary);
       border-radius: 8px;
       padding: 2px;
@@ -50,7 +51,8 @@
     .agency-name {
       color: var(--pure-white);
       font-weight: 700;
-      font-size: 1.5rem;
+      font-size: 1.6rem;
+      white-space: nowrap;
     }
     .card {
       background: var(--pure-white);
@@ -131,6 +133,25 @@
       border-radius: 50%;
       cursor: pointer;
     }
+    /* أزرار التنقل */
+    .nav-buttons {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 40px;
+    }
+    .nav-buttons a {
+      background: linear-gradient(135deg, var(--gold-primary), var(--gold-secondary));
+      color: var(--dark-charcoal);
+      padding: 12px 25px;
+      border-radius: 8px;
+      font-weight: bold;
+      text-decoration: none;
+      box-shadow: 0 4px 10px rgba(227, 173, 85, 0.3);
+    }
+    .nav-buttons a:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 15px rgba(227, 173, 85, 0.4);
+    }
   </style>
 </head>
 <body>
@@ -178,6 +199,12 @@
   <button class="copy-btn" onclick="copyToClipboard('emailCopy')">📋 Copy Email</button>
 </div>
 
+<!-- أزرار التنقل -->
+<div class="nav-buttons">
+  <a href="index.html"><i class="fas fa-arrow-left"></i> Previous</a>
+  <a href="audience.html">Next <i class="fas fa-arrow-right"></i></a>
+</div>
+
 <div id="imagePopup" class="popup" onclick="closeImage()">
   <div class="popup-content" onclick="event.stopPropagation()">
     <button class="close-btn" onclick="closeImage()">✕</button>
@@ -191,7 +218,7 @@ function copyToClipboard(id) {
   navigator.clipboard.writeText(copyText.value);
   const btn = copyText.nextElementSibling;
   btn.innerHTML = '✓ Copied!';
-  setTimeout(() => btn.innerHTML = btn.id === 'emailCopy' ? '📋 Copy Email' : '📋 Copy ID', 2000);
+  setTimeout(() => btn.innerHTML = (id === 'emailCopy' ? '📋 Copy Email' : '📋 Copy ID'), 2000);
 }
 function openImage(src) {
   document.getElementById('popupImage').src = src;

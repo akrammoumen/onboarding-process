@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Thank You | MOBEK MEDIA</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --gold-primary: #e3ad55;
+      --gold-secondary: #d89b3f;
+      --deep-teal: #1a5f7a;
+      --light-teal: #2d8da8;
+      --dark-charcoal: #1f2937;
+      --light-cream: #f8f5f0;
+    }
+    
+    @keyframes fadeIn {
+      from { opacity: 0; transform: translateY(20px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes float {
+      0% { transform: translateY(0px); }
+      50% { transform: translateY(-15px); }
+      100% { transform: translateY(0px); }
+    }
+    .animate-float {
+      animation: float 3s ease-in-out infinite;
+    }
+    .animate-fade {
+      animation: fadeIn 1s ease-out forwards;
+    }
+    .confetti {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background-color: var(--gold-primary);
+      opacity: 0;
+    }
+    .agency-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: linear-gradient(135deg, var(--deep-teal), #144d63);
+      padding: 15px 5%;
+      z-index: 1000;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .agency-logo {
+      height: 45px;
+      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+      border: 3px solid var(--gold-primary);
+      border-radius: 8px;
+      background-color: white;
+      padding: 4px;
+    }
+    .agency-name {
+      color: white;
+      font-weight: 700;
+      font-size: 1.5rem;
+      letter-spacing: 0.5px;
+    }
+  </style>
+</head>
+<body class="bg-gradient-to-b from-yellow-50 to-white min-h-screen flex items-center justify-center p-6">
+  <header class="agency-header">
+    <img src="mobek_agency.png" alt="MOBEK MEDIA Logo" class="agency-logo">
+    <div class="agency-name">MOBEK MEDIA</div>
+  </header>
+
+  <div class="max-w-xl w-full bg-white p-10 rounded-2xl shadow-xl text-center space-y-6 border border-gray-100 animate-fade relative overflow-hidden">
+    <div id="confetti-container" class="absolute top-0 left-0 w-full h-full pointer-events-none"></div>
+    <div class="mx-auto w-24 h-24 bg-gradient-to-br from-yellow-400 to-yellow-600 rounded-full flex items-center justify-center text-white text-4xl shadow-lg animate-float">
+      <i class="fas fa-check"></i>
+    </div>
+    <h1 class="text-4xl font-bold text-gray-900">
+      <span class="text-transparent bg-clip-text bg-gradient-to-r from-yellow-500 to-yellow-700">
+        You're All Set!
+      </span>
+    </h1>
+    <p class="text-xl text-gray-700 font-medium">
+      Thank you for completing your onboarding with 
+      <span class="font-bold text-yellow-600">MOBEK MEDIA</span>
+    </p>
+    <div class="bg-yellow-50 border-l-4 border-yellow-500 p-4 text-left rounded-r-lg">
+      <p class="text-gray-800">
+        <i class="fas fa-rocket text-yellow-600 mr-2"></i>
+        <strong>Next steps:</strong> We're preparing your campaign setup and will contact you shortly via Slack and ClickUp.
+      </p>
+    </div>
+    <div class="flex items-center justify-center space-x-2 text-yellow-600">
+      <i class="fas fa-sparkles"></i>
+      <p class="font-medium">Your marketing success journey begins now!</p>
+      <i class="fas fa-sparkles"></i>
+    </div>
+    <div class="pt-4 border-t border-gray-100">
+      <p class="text-gray-500 text-sm">
+        <i class="fas fa-heart text-yellow-500"></i> The MOBEK MEDIA Team
+      </p>
+    </div>
+  </div>
+
+  <script type="text/javascript">
+    var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
+    (function(){
+      var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
+      s1.async = true;
+      s1.src = 'https://embed.tawk.to/688f950a8ba539192ec9c8c9/1j1odsd19';
+      s1.charset = 'UTF-8';
+      s1.setAttribute('crossorigin','*');
+      s0.parentNode.insertBefore(s1, s0);
+    })();
+  </script>
+  
+  <script src="https://script.google.com/macros/s/AKfycbzjQPqBJT4bv0l4Jgh5HvnuToSqiQmF3pdsmclqvlV9eXnVlmF6niWTuZpsSS_Mc4eL/exec"></script>
+  
+  <script>
+    function createConfetti() {
+      const container = document.getElementById('confetti-container');
+      const colors = ['#e3ad55', '#d89b3f', '#f8c762', '#ffd700'];
+      for (let i = 0; i < 50; i++) {
+        const confetti = document.createElement('div');
+        confetti.className = 'confetti';
+        confetti.style.backgroundColor = colors[Math.floor(Math.random() * colors.length)];
+        confetti.style.left = Math.random() * 100 + 'vw';
+        confetti.style.top = -10 + 'px';
+        confetti.style.transform = 'rotate(' + Math.random() * 360 + 'deg)';
+        container.appendChild(confetti);
+        const animationDuration = Math.random() * 3 + 2;
+        confetti.style.animation = `
+          drop ${animationDuration}s linear ${Math.random() * 2}s forwards,
+          fade ${animationDuration}s linear ${Math.random() * 2}s forwards
+        `;
+        setTimeout(() => { confetti.remove(); }, animationDuration * 1000);
+      }
+    }
+    const style = document.createElement('style');
+    style.textContent = `
+      @keyframes drop { 100% { top: 100vh; } }
+      @keyframes fade { 0% { opacity: 1; } 80% { opacity: 1; } 100% { opacity: 0; } }
+    `;
+    document.head.appendChild(style);
+    window.addEventListener('DOMContentLoaded', function() {
+      createConfetti();
+    });
+  </script>
+</body>
+</html>

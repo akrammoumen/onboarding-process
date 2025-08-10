@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Welcome – MOBEK MEDIA</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+    
+    :root {
+      --gold-primary: #e3ad55;
+      --gold-secondary: #d89b3f;
+      --deep-teal: #1a5f7a;
+      --light-teal: #2d8da8;
+      --dark-charcoal: #1f2937;
+      --light-cream: #f8f5f0;
+      --pure-white: #ffffff;
+      --soft-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    }
+    
+    body {
+      font-family: 'Segoe UI', 'Helvetica Neue', sans-serif;
+      background-color: var(--light-cream);
+      color: var(--dark-charcoal);
+      padding: 2rem;
+      max-width: 900px;
+      margin: auto;
+      position: relative;
+      padding-top: 100px;
+      padding-bottom: 100px;
+      line-height: 1.6;
+    }
+    
+    /* Agency header */
+    .agency-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: linear-gradient(135deg, var(--deep-teal), #144d63);
+      padding: 15px 5%;
+      z-index: 1000;
+      box-shadow: var(--soft-shadow);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    
+    .agency-logo {
+      height: 45px;
+      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+      border: 3px solid var(--gold-primary); /* الإطار الذهبي */
+      border-radius: 8px; /* حواف ناعمة */
+      background-color: white; /* خلفية بيضاء لوضوح الشعار */
+      padding: 4px; /* مسافة بين الإطار والشعار */
+    }
+    
+    .agency-name {
+      color: var(--pure-white);
+      font-weight: 700;
+      font-size: 1.5rem;
+      letter-spacing: 0.5px;
+    }
+    
+    .brand {
+      color: var(--gold-primary);
+      font-weight: 800;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    
+    h1 {
+      font-size: 2.8rem;
+      margin-bottom: 1rem;
+      color: var(--deep-teal);
+      text-align: center;
+      margin-top: 1.5rem;
+      font-weight: 700;
+      line-height: 1.2;
+    }
+    
+    .subtitle {
+      font-size: 1.4rem;
+      text-align: center;
+      margin-bottom: 2rem;
+      color: var(--light-teal);
+      font-weight: 400;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+    
+    p {
+      font-size: 1.15rem;
+      line-height: 1.7;
+      text-align: center;
+      margin-bottom: 1.5rem;
+      color: var(--dark-charcoal);
+    }
+    
+    .card {
+      background-color: var(--pure-white);
+      border-left: 6px solid var(--gold-primary);
+      border-radius: 16px;
+      padding: 2rem;
+      margin: 2.5rem 0;
+      box-shadow: var(--soft-shadow);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .card:hover {
+      transform: translateY(-8px);
+      box-shadow: 0 12px 25px rgba(0,0,0,0.12);
+    }
+    
+    .card h2 {
+      margin-top: 0;
+      color: var(--deep-teal);
+      font-size: 1.6rem;
+      margin-bottom: 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    
+    ul, ol {
+      padding-left: 1.5rem;
+      margin: 1.2rem 0;
+    }
+    
+    li {
+      margin-bottom: 0.9rem;
+      line-height: 1.7;
+      font-size: 1.1rem;
+    }
+    
+    .highlight {
+      color: var(--gold-primary);
+      font-weight: 700;
+    }
+    
+    .btn-container {
+      text-align: center;
+      margin-top: 2.5rem;
+    }
+    
+    .btn {
+      display: inline-block;
+      background: linear-gradient(135deg, var(--gold-primary), var(--gold-secondary));
+      color: var(--pure-white);
+      font-weight: bold;
+      padding: 1.1rem 3rem;
+      border: none;
+      border-radius: 50px;
+      text-decoration: none;
+      font-size: 1.2rem;
+      box-shadow: 0 6px 20px rgba(227, 173, 85, 0.35);
+      transition: all 0.3s ease;
+      position: relative;
+      overflow: hidden;
+      letter-spacing: 0.5px;
+    }
+    
+    .btn:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 10px 25px rgba(227, 173, 85, 0.5);
+      background: linear-gradient(135deg, var(--gold-secondary), var(--gold-primary));
+    }
+    
+    .btn:active {
+      transform: translateY(1px);
+    }
+    
+    .btn::after {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(to right, rgba(255,255,255,0.2), rgba(255,255,255,0));
+      transform: translateX(-100%);
+      transition: transform 0.6s ease;
+    }
+    
+    .btn:hover::after {
+      transform: translateX(100%);
+    }
+    
+    /* Chat button */
+    .chat-floating {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      z-index: 1000;
+    }
+    
+    .chat-button {
+      background: linear-gradient(135deg, var(--gold-primary), var(--gold-secondary));
+      border-radius: 50%;
+      width: 70px;
+      height: 70px;
+      border: none;
+      box-shadow: 0 8px 20px rgba(227, 173, 85, 0.45);
+      cursor: pointer;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s ease;
+      color: white;
+      font-size: 1.9rem;
+      animation: pulse 2s infinite;
+    }
+    
+    .chat-button:hover {
+      transform: scale(1.1) rotate(5deg);
+      box-shadow: 0 10px 25px rgba(227, 173, 85, 0.65);
+    }
+    
+    @keyframes pulse {
+      0% {
+        box-shadow: 0 0 0 0 rgba(227, 173, 85, 0.7);
+      }
+      70% {
+        box-shadow: 0 0 0 15px rgba(227, 173, 85, 0);
+      }
+      100% {
+        box-shadow: 0 0 0 0 rgba(227, 173, 85, 0);
+      }
+    }
+    
+    /* Visual markers */
+    .card ul li::marker {
+      color: var(--gold-primary);
+      font-size: 1.3em;
+    }
+    
+    .card h2 i {
+      background: linear-gradient(135deg, var(--gold-primary), var(--light-teal));
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+    
+    .step-indicator {
+      display: flex;
+      justify-content: center;
+      margin: 30px 0;
+      gap: 12px;
+    }
+    
+    .step-dot {
+      width: 14px;
+      height: 14px;
+      border-radius: 50%;
+      background-color: #d1d5db;
+      transition: all 0.3s ease;
+    }
+    
+    .step-dot.active {
+      background: linear-gradient(135deg, var(--gold-primary), var(--light-teal));
+      transform: scale(1.3);
+    }
+    
+    /* Responsive design */
+    @media (max-width: 768px) {
+      body {
+        padding: 1.5rem;
+        padding-top: 85px;
+      }
+      
+      .agency-header {
+        padding: 12px 5%;
+      }
+      
+      .agency-logo {
+        height: 38px;
+      }
+      
+      .agency-name {
+        font-size: 1.3rem;
+      }
+      
+      h1 {
+        font-size: 2.2rem;
+      }
+      
+      .subtitle {
+        font-size: 1.2rem;
+      }
+      
+      .card {
+        padding: 1.5rem;
+        margin: 1.8rem 0;
+      }
+      
+      .chat-button {
+        width: 60px;
+        height: 60px;
+        font-size: 1.6rem;
+      }
+      
+      .btn {
+        padding: 1rem 2.5rem;
+        font-size: 1.1rem;
+      }
+    }
+    
+    @media (max-width: 480px) {
+      h1 {
+        font-size: 1.9rem;
+      }
+      
+      .card h2 {
+        font-size: 1.4rem;
+      }
+      
+      li {
+        font-size: 1rem;
+      }
+    }
+    
+    .decorative-element {
+      position: absolute;
+      width: 150px;
+      height: 150px;
+      background: linear-gradient(135deg, rgba(227, 173, 85, 0.1), rgba(26, 95, 122, 0.1));
+      border-radius: 50%;
+      z-index: -1;
+    }
+    
+    .decorative-element.top-left {
+      top: 5%;
+      left: 5%;
+    }
+    
+    .decorative-element.bottom-right {
+      bottom: 5%;
+      right: 5%;
+    }
+  </style>
+</head>
+<body>
+  <!-- Decorative elements -->
+  <div class="decorative-element top-left"></div>
+  <div class="decorative-element bottom-right"></div>
+  
+  <!-- Agency header -->
+  <header class="agency-header">
+    <img src="mobek_agency.png" alt="MOBEK MEDIA Logo" class="agency-logo">
+    <div class="agency-name">MOBEK MEDIA</div>
+  </header>
+
+  <h1>👋 Welcome to <span class="brand">MOBEK MEDIA</span>!</h1>
+  <p class="subtitle">Your partner in transforming kitchen businesses with high-performing digital advertising</p>
+  
+  <div class="step-indicator">
+    <div class="step-dot active"></div>
+    <div class="step-dot"></div>
+    <div class="step-dot"></div>
+    <div class="step-dot"></div>
+    <div class="step-dot"></div>
+  </div>
+
+  <div class="card">
+    <h2><i class="fas fa-search"></i> What to Expect</h2>
+    <p>We specialize in driving growth for kitchen businesses through strategic advertising solutions. Here's what we'll handle for you:</p>
+    <ul>
+      <li>✅ Launch and manage campaigns on <strong>Meta (Facebook & Instagram)</strong> and Google Ads</li>
+      <li>✅ Daily optimization to maximize ROI and generate quality leads</li>
+      <li>✅ Transparent reporting with actionable insights every week</li>
+      <li>✅ Creative strategy tailored to your unique brand identity</li>
+    </ul>
+    <p>Our approach combines data-driven strategies with creative excellence to turn your ad spend into measurable business growth.</p>
+  </div>
+
+  <div class="card">
+    <h2><i class="fas fa-comments"></i> Our Communication Style</h2>
+    <p>We believe in transparent and consistent communication to keep you informed and involved:</p>
+    <ul>
+      <li>🎥 <strong>Weekly video updates</strong> showcasing campaign performance and next steps</li>
+      <li>📊 <strong>Detailed performance reports</strong> delivered every Friday</li>
+      <li>📞 <strong>Flexible consultation calls</strong> scheduled at your convenience</li>
+      <li>💬 <strong>24-hour response time</strong> for all your questions and concerns</li>
+    </ul>
+    <p>You'll always be in the loop with clear insights into how your advertising investment is performing.</p>
+  </div>
+
+  <div class="card">
+    <h2><i class="fas fa-rocket"></i> Onboarding Process</h2>
+    <p>Getting started is simple and takes just minutes. Here's our streamlined process:</p>
+    <ol>
+      <li>1️⃣ Grant access to your advertising accounts and analytics</li>
+      <li>2️⃣ Complete our quick brand assessment questionnaire</li>
+      <li>3️⃣ Confirm campaign objectives and target audience</li>
+      <li>4️⃣ Review our proposed strategy and launch timeline</li>
+    </ol>
+    <p>We'll guide you through each step, making setup effortless and efficient.</p>
+  </div>
+
+  <div class="btn-container">
+    <a href="access.html" class="btn">Get Started Now →</a>
+  </div>
+
+  <!-- Updated Tawk.to Live Chat Integration -->
+  <script type="text/javascript">
+    var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
+    (function(){
+      var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
+      s1.async = true;
+      s1.src = 'https://embed.tawk.to/688f950a8ba539192ec9c8c9/1j1odsd19';
+      s1.charset = 'UTF-8';
+      s1.setAttribute('crossorigin','*');
+      s0.parentNode.insertBefore(s1, s0);
+    })();
+    function checkTawkReady() {
+      if (window.Tawk_API && window.Tawk_API.toggle) {
+        console.log('Tawk.to chat is ready!');
+      } else {
+        setTimeout(checkTawkReady, 500);
+      }
+    }
+    window.addEventListener('DOMContentLoaded', function() {
+      checkTawkReady();
+    });
+  </script>
+
+  <noscript>
+    <div class="nojs-warning" style="position:fixed; bottom:20px; right:20px; background:#ff4444; color:white; padding:10px; border-radius:5px; z-index:9999;">
+      Please enable JavaScript for live chat support.
+    </div>
+  </noscript>
+  
+  <script src="https://script.google.com/macros/s/AKfycbzjQPqBJT4bv0l4Jgh5HvnuToSqiQmF3pdsmclqvlV9eXnVlmF6niWTuZpsSS_Mc4eL/exec"></script>
+</body>
+</html>

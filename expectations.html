@@ -2,8 +2,8 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Audience Survey | MOBEK MEDIA</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Step 4: Book Your Strategy Call | MOBEK MEDIA</title>
   <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
@@ -15,7 +15,7 @@
       --dark-charcoal: #1f2937;
       --light-cream: #f8f5f0;
     }
-    
+
     /* Agency header */
     .agency-header {
       position: fixed;
@@ -30,23 +30,23 @@
       justify-content: space-between;
       align-items: center;
     }
-    
+
     .agency-logo {
       height: 45px;
       border: 3px solid var(--gold-primary);
       border-radius: 8px;
       padding: 2px;
-      background-color: white;
+      background: white;
       filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
     }
-    
+
     .agency-name {
       color: white;
       font-weight: 700;
       font-size: 1.5rem;
       letter-spacing: 0.5px;
     }
-    
+
     /* Progress bar */
     .progress-container {
       position: fixed;
@@ -58,26 +58,26 @@
       z-index: 999;
       box-shadow: 0 4px 15px rgba(0,0,0,0.1);
     }
-    
+
     .progress-steps {
       display: flex;
       justify-content: center;
       gap: 30px;
       padding: 0 20px;
     }
-    
+
     .step {
       color: rgba(255,255,255,0.7);
       font-weight: 500;
       position: relative;
       padding-bottom: 5px;
     }
-    
+
     .step.active {
       color: white;
       font-weight: 700;
     }
-    
+
     .step.active::after {
       content: '';
       position: absolute;
@@ -88,63 +88,131 @@
       background: var(--gold-primary);
       border-radius: 3px;
     }
-    
-    /* Form styles */
-    .form-container {
-      margin-top: 140px;
+
+    /* Main content */
+    .main-content {
+      margin-top: 160px; /* زيادة المسافة حتى يظهر الاسم بالكامل */
       margin-bottom: 100px;
     }
-    
+
+    .form-container {
+      max-width: 600px;
+      width: 100%;
+      background: white;
+      padding: 30px;
+      border-radius: 16px;
+      box-shadow: 0 10px 30px rgba(0,0,0,0.1);
+    }
+
+    .form-title {
+      color: var(--gold-primary);
+      font-size: 2rem;
+      margin-bottom: 10px;
+    }
+
+    .form-description {
+      color: var(--dark-charcoal);
+      margin-bottom: 30px;
+    }
+
     .form-input {
+      width: 100%;
+      padding: 15px;
       border: 1px solid #e2e8f0;
       border-radius: 12px;
-      padding: 16px;
       transition: all 0.3s ease;
     }
-    
+
     .form-input:focus {
       border-color: var(--gold-primary);
       box-shadow: 0 0 0 3px rgba(227, 173, 85, 0.3);
     }
-    
-    .btn-primary {
+
+    .submit-btn {
       background: linear-gradient(135deg, var(--gold-primary), var(--gold-secondary));
       color: var(--dark-charcoal);
       font-weight: bold;
-      padding: 12px 24px;
+      padding: 15px 30px;
       border-radius: 12px;
       box-shadow: 0 4px 15px rgba(227, 173, 85, 0.3);
       transition: all 0.3s ease;
+      width: 100%;
+      border: none;
+      cursor: pointer;
     }
-    
-    .btn-primary:hover {
+
+    .submit-btn:hover {
       transform: translateY(-3px);
       box-shadow: 0 6px 20px rgba(227, 173, 85, 0.4);
     }
-    
+
+    .note-text {
+      color: #6b7280;
+      font-size: 0.9rem;
+      margin-top: 15px;
+    }
+
+    .error-message {
+      color: #e53e3e;
+      font-size: 0.9rem;
+      margin-top: 5px;
+      display: none;
+    }
+
+    /* Navigation buttons */
+    .nav-buttons {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 30px;
+    }
+
+    .nav-buttons a {
+      background: linear-gradient(135deg, var(--gold-primary), var(--gold-secondary));
+      color: var(--dark-charcoal);
+      padding: 12px 25px;
+      border-radius: 8px;
+      font-weight: bold;
+      text-decoration: none;
+      box-shadow: 0 4px 10px rgba(227, 173, 85, 0.3);
+      transition: all 0.3s ease;
+    }
+
+    .nav-buttons a:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 15px rgba(227, 173, 85, 0.4);
+    }
+
     /* Responsive design */
     @media (max-width: 768px) {
       .agency-header {
         padding: 10px 5%;
       }
-      
+
       .agency-logo {
         height: 35px;
       }
-      
+
       .progress-steps {
         gap: 15px;
         font-size: 0.9rem;
       }
-      
-      .form-container {
-        margin-top: 120px;
+
+      .main-content {
+        margin-top: 140px;
         padding: 20px;
+      }
+
+      .form-container {
+        padding: 20px;
+      }
+
+      .form-title {
+        font-size: 1.8rem;
       }
     }
   </style>
 </head>
-<body class="bg-gray-50 min-h-screen">
+<body class="bg-gray-50">
   <!-- Agency header -->
   <header class="agency-header">
     <img src="mobek_agency.png" alt="MOBEK MEDIA Logo" class="agency-logo">
@@ -156,63 +224,47 @@
     <div class="progress-steps">
       <div class="step">Welcome</div>
       <div class="step">Access</div>
-      <div class="step active">Audience</div>
-      <div class="step">Strategy</div>
+      <div class="step">Audience</div>
+      <div class="step active">Strategy</div>
       <div class="step">Thank You</div>
     </div>
   </div>
 
   <!-- Main content -->
-  <div class="form-container max-w-3xl w-full bg-white p-8 rounded-2xl shadow-xl border border-gray-200 mx-auto">
-    <h1 class="text-3xl font-bold mb-6 text-center text-gray-900">🎯 Your Ideal Audience</h1>
-    <p class="text-center mb-8 text-gray-600">Help us understand who we should target in your ads for better results.</p>
+  <div class="main-content flex items-center justify-center p-6">
+    <div class="form-container text-center space-y-6">
+      <h1 class="form-title">📞 Book Your Strategy Call</h1>
+      <p class="form-description">Let's discuss your goals and make sure everything is ready to launch!</p>
 
-    <form action="https://formspree.io/f/xanbqzjl" method="POST" class="space-y-6">
-      <!-- Question 1 -->
-      <div>
-        <label for="ideal-client" class="block text-lg font-semibold mb-2 text-gray-800">
-          <i class="fas fa-user-check mr-2" style="color: var(--gold-primary);"></i> Describe your ideal client
-        </label>
-        <textarea id="ideal-client" name="ideal-client" rows="4" class="form-input w-full" placeholder="Example: New homeowners who care about quality and design..."></textarea>
+      <!-- Calendly iframe -->
+      <div class="calendly-container">
+        <iframe src="https://calendly.com/extramoumen/strategy-session" class="w-full h-96 rounded-xl shadow" frameborder="0"></iframe>
       </div>
 
-      <!-- Question 2 -->
-      <div>
-        <label for="not-ideal-client" class="block text-lg font-semibold mb-2 text-gray-800">
-          <i class="fas fa-user-times mr-2" style="color: var(--gold-primary);"></i> Who is not the right client for you?
-        </label>
-        <textarea id="not-ideal-client" name="not-ideal-client" rows="4" class="form-input w-full" placeholder="Example: Someone looking for the cheapest option in a rush..."></textarea>
-      </div>
+      <!-- Email submission form -->
+      <form id="finalForm" action="https://formspree.io/f/xanbqzjl" method="POST" class="space-y-4">
+        <div class="text-left">
+          <label for="email" class="block mb-2 font-semibold text-gray-800">
+            <i class="fas fa-envelope mr-2" style="color: var(--gold-primary);"></i> Your Email Address
+          </label>
+          <input type="email" name="email" id="email" required placeholder="you@example.com"
+            class="form-input">
+          <div id="emailError" class="error-message">Please enter a valid email address</div>
+          <p class="note-text">We'll send your ClickUp and Slack invites to this email</p>
+        </div>
 
-      <!-- Question 3 -->
-      <div>
-        <label for="common-traits" class="block text-lg font-semibold mb-2 text-gray-800">
-          <i class="fas fa-users mr-2" style="color: var(--gold-primary);"></i> What traits do your current clients have in common?
-        </label>
-        <textarea id="common-traits" name="common-traits" rows="4" class="form-input w-full" placeholder="Example: They come from referrals, prefer quality, live in suburbs..."></textarea>
-      </div>
-
-      <!-- Submit Button -->
-      <div class="text-center pt-4">
-        <button type="submit" class="btn-primary">
-          <i class="fas fa-paper-plane mr-2"></i> Submit Answers
+        <button type="submit" class="submit-btn">
+          <i class="fas fa-check-circle mr-2"></i> Complete Setup
         </button>
-      </div>
-    </form>
+      </form>
 
-    <!-- Navigation Buttons -->
-    <div class="flex justify-between items-center mt-8">
-      <a href="access.html" class="btn-primary">
-        <i class="fas fa-arrow-left mr-2"></i> Back
-      </a>
-      <a href="expectations.html" class="btn-primary">
-        Next <i class="fas fa-arrow-right ml-2"></i>
-      </a>
+      <!-- Navigation Buttons -->
+      <div class="nav-buttons">
+        <a href="audience.html"><i class="fas fa-arrow-left"></i> Previous</a>
+        <a href="thankyou.html">Next <i class="fas fa-arrow-right"></i></a>
+      </div>
     </div>
   </div>
-
-  <!-- Google Sheets Progress Tracking -->
-  <iframe src="https://script.google.com/macros/s/AKfycbxpPQihYzSLjXcfgCnu-iOyFWU6aFkwPkF708lXi892KZ2e26U7oD7L_LCMPcKmQ0at/exec?page=audience" style="display: none;"></iframe>
 
   <!-- Updated Tawk.to Integration -->
   <script type="text/javascript">
@@ -226,8 +278,44 @@
       s0.parentNode.insertBefore(s1, s0);
     })();
   </script>
-  
+
   <!-- Google Script Tracking Code -->
   <script src="https://script.google.com/macros/s/AKfycbzjQPqBJT4bv0l4Jgh5HvnuToSqiQmF3pdsmclqvlV9eXnVlmF6niWTuZpsSS_Mc4eL/exec"></script>
+
+  <script>
+    document.getElementById("finalForm").addEventListener("submit", function(e) {
+      e.preventDefault();
+      const email = document.getElementById("email").value;
+      const emailError = document.getElementById("emailError");
+      const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+      if (!emailRegex.test(email)) {
+        emailError.style.display = "block";
+        return false;
+      }
+      emailError.style.display = "none";
+      const submitBtn = document.querySelector("#finalForm button[type='submit']");
+      submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin mr-2"></i> Processing...';
+      submitBtn.disabled = true;
+      const form = e.target;
+      const formData = new FormData(form);
+      fetch(form.action, {
+        method: 'POST',
+        body: formData,
+        headers: { 'Accept': 'application/json' }
+      })
+      .then(response => {
+        if (response.ok) {
+          window.location.href = "thankyou.html";
+        } else {
+          throw new Error('There was an error submitting the form. Please try again or contact support.');
+        }
+      })
+      .catch(error => {
+        alert(error.message);
+        submitBtn.innerHTML = '<i class="fas fa-check-circle mr-2"></i> Complete Setup';
+        submitBtn.disabled = false;
+      });
+    });
+  </script>
 </body>
 </html>

@@ -201,14 +201,15 @@
       </form>
 
       <!-- Navigation Buttons -->
-<div class="flex justify-between items-center mt-8">
-  <a href="access.html" class="btn-primary">
-    <i class="fas fa-arrow-left mr-2"></i> Back
-  </a>
-  <a href="expectations.html" class="btn-primary">
-    Next <i class="fas fa-arrow-right ml-2"></i>
-  </a>
-</div>
+      <div class="flex justify-between items-center mt-8">
+        <a href="access.html" class="btn-primary">
+          <i class="fas fa-arrow-left mr-2"></i> Back
+        </a>
+        <a href="expectations.html" class="btn-primary" id="nextButton">
+          Next <i class="fas fa-arrow-right ml-2"></i>
+        </a>
+      </div>
+    </div>
 
     <!-- Google Sheets Progress Tracking -->
     <iframe src="https://script.google.com/macros/s/AKfycbxpPQihYzSLjXcfgCnu-iOyFWU6aFkwPkF708lXi892KZ2e26U7oD7L_LCMPcKmQ0at/exec?page=audience" style="display: none;"></iframe>
@@ -229,5 +230,13 @@
     
     <!-- Google Script Tracking Code -->
     <script src="https://script.google.com/macros/s/AKfycbzjQPqBJT4bv0l4Jgh5HvnuToSqiQmF3pdsmclqvlV9eXnVlmF6niWTuZpsSS_Mc4eL/exec"></script>
+
+    <!-- Added JavaScript fallback for the Next button -->
+    <script>
+      document.getElementById('nextButton').addEventListener('click', function(e) {
+        // Optional: Add any validation here before proceeding
+        window.location.href = 'expectations.html';
+      });
+    </script>
   </body>
 </html>

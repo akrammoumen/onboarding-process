@@ -1,243 +1,304 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta name="robots" content="noindex, nofollow">
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Audience Survey | MOBEK MEDIA</title>
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <style>
-      :root {
-        --gold-primary: #e3ad55;
-        --gold-secondary: #d89b3f;
-        --deep-teal: #1a5f7a;
-        --light-teal: #2d8da8;
-        --dark-charcoal: #1f2937;
-        --light-cream: #f8f5f0;
-      }
-      
-      /* Agency header */
+<head>
+  <meta name="robots" content="noindex, nofollow">
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Audience Survey | MOBEK MEDIA</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    :root {
+      --gold-primary: #e3ad55;
+      --gold-secondary: #d89b3f;
+      --deep-teal: #1a5f7a;
+      --light-teal: #2d8da8;
+      --dark-charcoal: #1f2937;
+      --light-cream: #f8f5f0;
+      --pure-white: #ffffff;
+      --soft-shadow: 0 4px 20px rgba(0,0,0,0.08);
+    }
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: var(--light-cream);
+      color: var(--dark-charcoal);
+      min-height: 100vh;
+    }
+    /* Agency header identical to access page */
+    .agency-header {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      background: linear-gradient(135deg, var(--deep-teal), #144d63);
+      padding: 15px 5%;
+      z-index: 1000;
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+    .agency-logo {
+      height: 45px;
+      border: 3px solid var(--gold-primary);
+      border-radius: 8px;
+      padding: 2px;
+      background-color: white;
+      filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+    }
+    .agency-name {
+      color: white;
+      font-weight: 700;
+      font-size: 1.5rem;
+      letter-spacing: 0.5px;
+    }
+    /* Progress bar identical to access page */
+    .progress-container {
+      position: fixed;
+      top: 80px;
+      left: 0;
+      width: 100%;
+      background: linear-gradient(135deg, var(--deep-teal), #144d63);
+      padding: 15px 0;
+      z-index: 999;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+    .progress-steps {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      padding: 0 20px;
+    }
+    .step {
+      color: rgba(255,255,255,0.7);
+      font-weight: 500;
+      position: relative;
+      padding-bottom: 5px;
+    }
+    .step.active {
+      color: white;
+      font-weight: 700;
+    }
+    .step.active::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: var(--gold-primary);
+      border-radius: 3px;
+    }
+    /* Card style (original) */
+    .card {
+      background: var(--pure-white);
+      border-left: 4px solid var(--gold-primary);
+      padding: 25px;
+      border-radius: 10px;
+      margin-bottom: 30px;
+      box-shadow: var(--soft-shadow);
+    }
+    .card h2 {
+      color: var(--deep-teal);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+    .form-input {
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 14px 16px;
+      transition: all 0.3s ease;
+      width: 100%;
+      font-family: inherit;
+    }
+    .form-input:focus {
+      border-color: var(--gold-primary);
+      box-shadow: 0 0 0 3px rgba(227, 173, 85, 0.3);
+      outline: none;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--gold-primary), var(--gold-secondary));
+      color: var(--dark-charcoal);
+      font-weight: bold;
+      padding: 12px 24px;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(227, 173, 85, 0.3);
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+    }
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(227, 173, 85, 0.4);
+    }
+    .nav-buttons {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 40px;
+      gap: 20px;
+    }
+    @media (max-width: 768px) {
       .agency-header {
-        position: fixed;
-        top: 0;
-        left: 0;
-        width: 100%;
-        background: linear-gradient(135deg, var(--deep-teal), #144d63);
-        padding: 15px 5%;
-        z-index: 1000;
-        box-shadow: 0 4px 20px rgba(0,0,0,0.08);
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
+        padding: 10px 5%;
       }
-      
       .agency-logo {
-        height: 45px;
-        border: 3px solid var(--gold-primary);
-        border-radius: 8px;
-        padding: 2px;
-        background-color: white;
-        filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
+        height: 35px;
       }
-      
-      .agency-name {
-        color: white;
-        font-weight: 700;
-        font-size: 1.5rem;
-        letter-spacing: 0.5px;
-      }
-      
-      /* Progress bar */
-      .progress-container {
-        position: fixed;
-        top: 80px;
-        left: 0;
-        width: 100%;
-        background: linear-gradient(135deg, var(--deep-teal), #144d63);
-        padding: 15px 0;
-        z-index: 999;
-        box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-      }
-      
       .progress-steps {
-        display: flex;
-        justify-content: center;
-        gap: 30px;
-        padding: 0 20px;
+        gap: 15px;
+        font-size: 0.9rem;
       }
-      
-      .step {
-        color: rgba(255,255,255,0.7);
-        font-weight: 500;
-        position: relative;
-        padding-bottom: 5px;
+      .card {
+        padding: 20px;
       }
-      
-      .step.active {
-        color: white;
-        font-weight: 700;
-      }
-      
-      .step.active::after {
-        content: '';
-        position: absolute;
-        bottom: 0;
-        left: 0;
-        width: 100%;
-        height: 3px;
-        background: var(--gold-primary);
-        border-radius: 3px;
-      }
-      
-      /* Form styles */
-      .form-container {
-        margin-top: 140px;
-        margin-bottom: 100px;
-      }
-      
-      .form-input {
-        border: 1px solid #e2e8f0;
-        border-radius: 12px;
-        padding: 16px;
-        transition: all 0.3s ease;
-      }
-      
-      .form-input:focus {
-        border-color: var(--gold-primary);
-        box-shadow: 0 0 0 3px rgba(227, 173, 85, 0.3);
-      }
-      
-      .btn-primary {
-        background: linear-gradient(135deg, var(--gold-primary), var(--gold-secondary));
-        color: var(--dark-charcoal);
-        font-weight: bold;
-        padding: 12px 24px;
-        border-radius: 12px;
-        box-shadow: 0 4px 15px rgba(227, 173, 85, 0.3);
-        transition: all 0.3s ease;
-      }
-      
-      .btn-primary:hover {
-        transform: translateY(-3px);
-        box-shadow: 0 6px 20px rgba(227, 173, 85, 0.4);
-      }
-      
-      /* Responsive design */
-      @media (max-width: 768px) {
-        .agency-header {
-          padding: 10px 5%;
-        }
-        
-        .agency-logo {
-          height: 35px;
-        }
-        
-        .progress-steps {
-          gap: 15px;
-          font-size: 0.9rem;
-        }
-        
-        .form-container {
-          margin-top: 120px;
-          padding: 20px;
-        }
-      }
-    </style>
-  </head>
-  <body class="bg-gray-50 min-h-screen">
-    <!-- Agency header -->
-    <header class="agency-header">
-      <img src="mobek_agency.png" alt="MOBEK MEDIA Logo" class="agency-logo">
-      <div class="agency-name">MOBEK MEDIA</div>
-    </header>
+    }
+  </style>
+</head>
+<body>
 
-    <!-- Progress bar -->
-    <div class="progress-container">
-      <div class="progress-steps">
-        <div class="step">Welcome</div>
-        <div class="step">Access</div>
-        <div class="step active">Audience</div>
-        <div class="step">Strategy</div>
-        <div class="step">Thank You</div>
+<header class="agency-header">
+  <img src="mobek_agency.png" alt="MOBEK MEDIA Logo" class="agency-logo">
+  <div class="agency-name">MOBEK MEDIA</div>
+</header>
+
+<!-- Progress bar -->
+<div class="progress-container">
+  <div class="progress-steps">
+    <div class="step">Welcome</div>
+    <div class="step">Access</div>
+    <div class="step active">Audience</div>
+    <div class="step">Strategy</div>
+    <div class="step">Thank You</div>
+  </div>
+</div>
+
+<!-- Main content -->
+<div class="max-w-3xl w-full mx-auto px-4" style="margin-top: 160px; margin-bottom: 100px;">
+  <h1 class="text-3xl font-bold mb-2 text-center text-gray-900">📋 Understanding Your Business</h1>
+  <p class="text-center text-gray-600 mb-8">Help us tailor a winning Meta Ads strategy for your kitchen & furniture brand.</p>
+
+  <form id="audienceForm" action="https://formspree.io/f/xanbqzjl" method="POST">
+    <!-- Section 1: Offer & Business -->
+    <div class="card">
+      <h2><i class="fas fa-tag"></i> Offer & Business</h2>
+      <div class="space-y-5">
+        <div>
+          <label class="block font-semibold mb-1">What offer do you want to promote?</label>
+          <input type="text" name="offer" class="form-input" placeholder="e.g., 20% off kitchen packages, free design consultation, financing options" required>
+        </div>
+        <div>
+          <label class="block font-semibold mb-1">What is your most profitable service?</label>
+          <input type="text" name="profitable_service" class="form-input" placeholder="e.g., custom cabinets, countertops, full kitchen remodel" required>
+        </div>
+        <div>
+          <label class="block font-semibold mb-1">What is your average deal value? (USD/CAD)</label>
+          <input type="text" name="avg_deal_value" class="form-input" placeholder="e.g., $15,000" required>
+        </div>
+        <div>
+          <label class="block font-semibold mb-1">What is your minimum project price?</label>
+          <input type="text" name="min_project_price" class="form-input" placeholder="e.g., $5,000" required>
+        </div>
       </div>
     </div>
 
-    <!-- Main content -->
-    <div class="form-container max-w-3xl w-full bg-white p-8 rounded-2xl shadow-xl border border-gray-200 mx-auto">
-      <h1 class="text-3xl font-bold mb-6 text-center text-gray-900">🎯 Your Ideal Audience</h1>
-      <p class="text-center mb-8 text-gray-600">Help us understand who we should target in your ads for better results.</p>
-
-      <form action="https://formspree.io/f/xanbqzjl" method="POST" class="space-y-6">
-        <!-- Question 1 -->
+    <!-- Section 2: Target Audience -->
+    <div class="card">
+      <h2><i class="fas fa-users"></i> Target Audience</h2>
+      <div class="space-y-5">
         <div>
-          <label for="ideal-client" class="block text-lg font-semibold mb-2 text-gray-800">
-            <i class="fas fa-user-check mr-2" style="color: var(--gold-primary);"></i> Describe your ideal client
-          </label>
-          <textarea id="ideal-client" name="ideal-client" rows="4" class="form-input w-full" placeholder="Example: New homeowners who care about quality and design..."></textarea>
+          <label class="block font-semibold mb-1">Who is your ideal client?</label>
+          <textarea name="ideal_client" rows="3" class="form-input" placeholder="Example: Homeowners aged 35-55, suburbs, looking for quality kitchen renovation within 30 miles of our showroom..."></textarea>
         </div>
-
-        <!-- Question 2 -->
         <div>
-          <label for="not-ideal-client" class="block text-lg font-semibold mb-2 text-gray-800">
-            <i class="fas fa-user-times mr-2" style="color: var(--gold-primary);"></i> Who is not the right client for you?
-          </label>
-          <textarea id="not-ideal-client" name="not-ideal-client" rows="4" class="form-input w-full" placeholder="Example: Someone looking for the cheapest option in a rush..."></textarea>
+          <label class="block font-semibold mb-1">Who is NOT the right client for you?</label>
+          <textarea name="not_ideal_client" rows="3" class="form-input" placeholder="Example: Someone looking for the cheapest option, need everything done in 1 week, rental property owners..."></textarea>
         </div>
-
-        <!-- Question 3 -->
         <div>
-          <label for="common-traits" class="block text-lg font-semibold mb-2 text-gray-800">
-            <i class="fas fa-users mr-2" style="color: var(--gold-primary);"></i> What traits do your current clients have in common?
-          </label>
-          <textarea id="common-traits" name="common-traits" rows="4" class="form-input w-full" placeholder="Example: They come from referrals, prefer quality, live in suburbs..."></textarea>
+          <label class="block font-semibold mb-1">What traits do your current clients have in common?</label>
+          <textarea name="common_traits" rows="3" class="form-input" placeholder="Example: They come from referrals, own their home 5+ years, value custom design, live in zip codes 90210, 90211..."></textarea>
         </div>
-
-        <!-- Submit Button -->
-        <div class="text-center pt-4">
-          <button type="submit" class="btn-primary">
-            <i class="fas fa-paper-plane mr-2"></i> Submit Answers
-          </button>
-        </div>
-      </form>
-
-      <!-- Navigation Buttons -->
-      <div class="flex justify-between items-center mt-8">
-        <a href="access.html" class="btn-primary">
-          <i class="fas fa-arrow-left mr-2"></i> Back
-        </a>
-        <a href="expectations.html" class="btn-primary" id="nextButton">
-          Next <i class="fas fa-arrow-right ml-2"></i>
-        </a>
       </div>
     </div>
 
-    <!-- Google Sheets Progress Tracking -->
-    <iframe src="https://script.google.com/macros/s/AKfycbxpPQihYzSLjXcfgCnu-iOyFWU6aFkwPkF708lXi892KZ2e26U7oD7L_LCMPcKmQ0at/exec?page=audience" style="display: none;"></iframe>
+    <!-- Section 3: Operations & Sales -->
+    <div class="card">
+      <h2><i class="fas fa-chart-line"></i> Operations & Sales</h2>
+      <div class="space-y-5">
+        <div>
+          <label class="block font-semibold mb-1">Who responds to leads and how fast?</label>
+          <input type="text" name="lead_response" class="form-input" placeholder="e.g., Sarah (sales manager) responds within 15 minutes during business hours" required>
+        </div>
+        <div>
+          <label class="block font-semibold mb-1">How many projects can you handle per month?</label>
+          <input type="text" name="monthly_capacity" class="form-input" placeholder="e.g., 5-8 kitchen projects" required>
+        </div>
+        <div>
+          <label class="block font-semibold mb-1">What locations do you want to target?</label>
+          <input type="text" name="target_locations" class="form-input" placeholder="e.g., Within 30 miles of Austin, TX; specific zip codes 78701-78705" required>
+        </div>
+        <div>
+          <label class="block font-semibold mb-1">Can you track where your leads and sales come from?</label>
+          <input type="text" name="tracking_method" class="form-input" placeholder="e.g., Yes, using CallRail + UTM parameters in HubSpot CRM" required>
+        </div>
+      </div>
+    </div>
 
-    <!-- Updated Tawk.to Integration -->
-    <script type="text/javascript">
-      var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
-      
-      (function(){
-        var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
-        s1.async = true;
-        s1.src = 'https://embed.tawk.to/688f950a8ba539192ec9c8c9/1j1odsd19';
-        s1.charset = 'UTF-8';
-        s1.setAttribute('crossorigin','*');
-        s0.parentNode.insertBefore(s1, s0);
-      })();
-    </script>
-    
-    <!-- Google Script Tracking Code -->
-    <script src="https://script.google.com/macros/s/AKfycbzjQPqBJT4bv0l4Jgh5HvnuToSqiQmF3pdsmclqvlV9eXnVlmF6niWTuZpsSS_Mc4eL/exec"></script>
+    <!-- Hidden input for formspree subject -->
+    <input type="hidden" name="_subject" value="New Audience Survey from Client">
 
-    <!-- Added JavaScript fallback for the Next button -->
-    <script>
-      document.getElementById('nextButton').addEventListener('click', function(e) {
-        // Optional: Add any validation here before proceeding
+    <!-- Navigation Buttons: Previous + Next (submits form) -->
+    <div class="nav-buttons">
+      <a href="access.html" class="btn-primary"><i class="fas fa-arrow-left"></i> Previous</a>
+      <button type="submit" class="btn-primary" id="nextBtn">Next <i class="fas fa-arrow-right"></i></button>
+    </div>
+  </form>
+</div>
+
+<!-- Tawk.to Integration (same as access page) -->
+<script type="text/javascript">
+  var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
+  (function(){
+    var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
+    s1.async = true;
+    s1.src = 'https://embed.tawk.to/688f950a8ba539192ec9c8c9/1j1odsd19';
+    s1.charset = 'UTF-8';
+    s1.setAttribute('crossorigin','*');
+    s0.parentNode.insertBefore(s1, s0);
+  })();
+</script>
+
+<script>
+  // Optional: add any client-side validation before submit if needed
+  const form = document.getElementById('audienceForm');
+  form.addEventListener('submit', function(e) {
+    // no extra validation needed, browser handles required fields
+    // but we keep the default behavior (formspree post then redirect)
+    // Note: Formspree will redirect to its own thank you page by default.
+    // To keep the user inside our flow, we can intercept and redirect to next page (expectations.html)
+    e.preventDefault();
+    const formData = new FormData(form);
+    fetch(form.action, {
+      method: 'POST',
+      body: formData,
+      headers: { 'Accept': 'application/json' }
+    }).then(response => {
+      if (response.ok) {
         window.location.href = 'expectations.html';
-      });
-    </script>
-  </body>
+      } else {
+        alert('There was an issue submitting the form. Please try again or contact support.');
+      }
+    }).catch(error => {
+      console.error('Error:', error);
+      alert('Network error. Please check your connection.');
+    });
+  });
+</script>
+</body>
 </html>

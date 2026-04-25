@@ -5,6 +5,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
   <title>Access Setup - MOBEK MEDIA</title>
+  <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
   <style>
     :root {
@@ -19,14 +20,11 @@
     }
     body {
       font-family: 'Segoe UI', sans-serif;
-      max-width: 900px;
-      margin: auto;
-      padding: 20px;
       background: var(--light-cream);
       color: var(--dark-charcoal);
-      padding-top: 140px; /* زيادة المسافة من الأعلى */
-      padding-bottom: 100px;
+      min-height: 100vh;
     }
+    /* Agency header (identical to audience page) */
     .agency-header {
       position: fixed;
       top: 0;
@@ -35,26 +33,63 @@
       background: linear-gradient(135deg, var(--deep-teal), #144d63);
       padding: 15px 5%;
       z-index: 1000;
-      box-shadow: var(--soft-shadow);
+      box-shadow: 0 4px 20px rgba(0,0,0,0.08);
       display: flex;
-      justify-content: flex-start;
+      justify-content: space-between;
       align-items: center;
-      gap: 15px;
     }
     .agency-logo {
-      height: 50px;
+      height: 45px;
       border: 3px solid var(--gold-primary);
       border-radius: 8px;
       padding: 2px;
-      background: white;
+      background-color: white;
       filter: drop-shadow(0 2px 4px rgba(0,0,0,0.2));
     }
     .agency-name {
-      color: var(--pure-white);
+      color: white;
       font-weight: 700;
-      font-size: 1.6rem;
-      white-space: nowrap;
+      font-size: 1.5rem;
+      letter-spacing: 0.5px;
     }
+    /* Progress bar */
+    .progress-container {
+      position: fixed;
+      top: 80px;
+      left: 0;
+      width: 100%;
+      background: linear-gradient(135deg, var(--deep-teal), #144d63);
+      padding: 15px 0;
+      z-index: 999;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.1);
+    }
+    .progress-steps {
+      display: flex;
+      justify-content: center;
+      gap: 30px;
+      padding: 0 20px;
+    }
+    .step {
+      color: rgba(255,255,255,0.7);
+      font-weight: 500;
+      position: relative;
+      padding-bottom: 5px;
+    }
+    .step.active {
+      color: white;
+      font-weight: 700;
+    }
+    .step.active::after {
+      content: '';
+      position: absolute;
+      bottom: 0;
+      left: 0;
+      width: 100%;
+      height: 3px;
+      background: var(--gold-primary);
+      border-radius: 3px;
+    }
+    /* Card style (original from given code) */
     .card {
       background: var(--pure-white);
       border-left: 4px solid var(--gold-primary);
@@ -79,6 +114,11 @@
       font-weight: bold;
       text-decoration: none;
       box-shadow: 0 4px 10px rgba(227, 173, 85, 0.3);
+      transition: all 0.2s ease;
+    }
+    .step-link:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 6px 15px rgba(227, 173, 85, 0.4);
     }
     .copy-btn {
       background: var(--gold-primary);
@@ -87,18 +127,30 @@
       border-radius: 6px;
       font-weight: bold;
       cursor: pointer;
+      transition: 0.2s;
     }
-    .image-btn {
-      margin-top: 8px;
+    .copy-btn:hover {
+      background: var(--gold-secondary);
+    }
+    /* tip button (replaces image buttons) */
+    .tip-btn {
       background: var(--deep-teal);
       color: white;
-      padding: 10px 15px;
+      padding: 8px 16px;
       border-radius: 8px;
       cursor: pointer;
       display: inline-flex;
       align-items: center;
-      gap: 5px;
+      gap: 8px;
+      font-size: 0.9rem;
+      border: none;
+      margin-top: 8px;
+      transition: 0.2s;
     }
+    .tip-btn:hover {
+      background: var(--light-teal);
+    }
+    /* popup for tips */
     .popup {
       display: none;
       position: fixed;
@@ -107,51 +159,81 @@
       background-color: rgba(0, 0, 0, 0.7);
       justify-content: center;
       align-items: center;
-      z-index: 1000;
+      z-index: 2000;
     }
     .popup-content {
       background: white;
-      padding: 10px;
-      border-radius: 10px;
-      max-width: 90%;
-      max-height: 90%;
-    }
-    .popup-content img {
-      max-width: 100%;
-      height: auto;
-      border-radius: 8px;
+      padding: 25px;
+      border-radius: 16px;
+      max-width: 500px;
+      width: 90%;
+      box-shadow: 0 25px 40px rgba(0,0,0,0.3);
+      position: relative;
+      border-left: 5px solid var(--gold-primary);
     }
     .close-btn {
       position: absolute;
-      top: 10px;
-      right: 10px;
+      top: 12px;
+      right: 12px;
       background: var(--gold-primary);
       border: none;
       color: var(--dark-charcoal);
       font-weight: bold;
-      width: 30px;
-      height: 30px;
+      width: 32px;
+      height: 32px;
       border-radius: 50%;
       cursor: pointer;
+      font-size: 18px;
     }
-    /* أزرار التنقل */
+    .form-input {
+      border: 1px solid #e2e8f0;
+      border-radius: 12px;
+      padding: 14px 16px;
+      transition: all 0.3s ease;
+      width: 100%;
+    }
+    .form-input:focus {
+      border-color: var(--gold-primary);
+      box-shadow: 0 0 0 3px rgba(227, 173, 85, 0.3);
+      outline: none;
+    }
+    .btn-primary {
+      background: linear-gradient(135deg, var(--gold-primary), var(--gold-secondary));
+      color: var(--dark-charcoal);
+      font-weight: bold;
+      padding: 12px 24px;
+      border-radius: 12px;
+      box-shadow: 0 4px 15px rgba(227, 173, 85, 0.3);
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      text-decoration: none;
+      border: none;
+      cursor: pointer;
+    }
+    .btn-primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 6px 20px rgba(227, 173, 85, 0.4);
+    }
     .nav-buttons {
       display: flex;
       justify-content: space-between;
       margin-top: 40px;
+      gap: 20px;
     }
-    .nav-buttons a {
-      background: linear-gradient(135deg, var(--gold-primary), var(--gold-secondary));
-      color: var(--dark-charcoal);
-      padding: 12px 25px;
-      border-radius: 8px;
-      font-weight: bold;
-      text-decoration: none;
-      box-shadow: 0 4px 10px rgba(227, 173, 85, 0.3);
-    }
-    .nav-buttons a:hover {
-      transform: translateY(-2px);
-      box-shadow: 0 6px 15px rgba(227, 173, 85, 0.4);
+    /* Responsive */
+    @media (max-width: 768px) {
+      .agency-header {
+        padding: 10px 5%;
+      }
+      .agency-logo {
+        height: 35px;
+      }
+      .progress-steps {
+        gap: 15px;
+        font-size: 0.9rem;
+      }
     }
   </style>
 </head>
@@ -162,73 +244,176 @@
   <div class="agency-name">MOBEK MEDIA</div>
 </header>
 
-<h1>Grant Us Access in Just a Few Steps</h1>
+<!-- Progress bar (same as audience) -->
+<div class="progress-container">
+  <div class="progress-steps">
+    <div class="step">Welcome</div>
+    <div class="step active">Access</div>
+    <div class="step">Audience</div>
+    <div class="step">Strategy</div>
+    <div class="step">Thank You</div>
+  </div>
+</div>
 
-<div class="card">
-  <h2><i class="fab fa-facebook-square"></i> Meta Access</h2>
-  <p><strong>1. Add us to your Business Manager:</strong></p>
-  <input id="metaID" value="123456789012345" readonly>
-  <button class="copy-btn" onclick="copyToClipboard('metaID')">📋 Copy ID</button><br>
-  <a class="step-link" href="https://business.facebook.com/settings/partners" target="_blank">Go to Business Manager</a>
-  <button class="image-btn" onclick="openImage('businessmanager.jpg')"><i class="fas fa-image"></i> View Image</button>
+<!-- Main content -->
+<div class="max-w-3xl w-full mx-auto px-4" style="margin-top: 160px; margin-bottom: 100px;">
   
-  <p><strong>2. Grant access to your Facebook Page:</strong></p>
-  <a class="step-link" href="https://business.facebook.com/settings/pages" target="_blank">Page Settings</a>
-  <button class="image-btn" onclick="openImage('fbpage.jpg')"><i class="fas fa-image"></i> View Image</button>
+  <h1 class="text-3xl font-bold mb-6 text-center text-gray-900">🔐 Grant Us Access in Just a Few Steps</h1>
+  <p class="text-center text-gray-600 mb-8">We need the right permissions to start driving results for your kitchen & furniture brand.</p>
 
-  <p><strong>3. Grant access to your Ad Account:</strong></p>
-  <a class="step-link" href="https://business.facebook.com/settings/ad-accounts" target="_blank">Ad Account Settings</a>
-  <button class="image-btn" onclick="openImage('adaccount.jpg')"><i class="fas fa-image"></i> View Image</button>
+  <!-- Meta Access Card -->
+  <div class="card">
+    <h2><i class="fab fa-facebook-square"></i> Meta Access (Business Manager)</h2>
+    <p><strong>1. Add our partner ID to your Business Manager:</strong></p>
+    <div class="flex flex-wrap items-center gap-3 mb-3">
+      <input id="metaID" value="123456789012345" readonly class="border rounded px-3 py-2 bg-gray-100 flex-1">
+      <button class="copy-btn" onclick="copyToClipboard('metaID')">📋 Copy ID</button>
+    </div>
+    <a class="step-link" href="https://business.facebook.com/settings/partners" target="_blank"><i class="fas fa-external-link-alt"></i> Go to Business Manager</a>
+    <button class="tip-btn" onclick="showTip('metaTip')"><i class="fas fa-lightbulb"></i> Tip: Required permission level</button>
+    <div style="display: none;" id="metaTip">
+      <strong>What access we need:</strong> We require <strong>Admin or Manage Ad Accounts</strong> access to your Business Manager. This allows us to create ads, manage pixels, and view analytics. Don't worry — we never touch billing info.
+    </div>
 
-  <p><strong>4. Pixel Access:</strong></p>
-  <a class="step-link" href="https://business.facebook.com/events_manager" target="_blank">Go to Events Manager</a>
-  <button class="image-btn" onclick="openImage('pixel.jpg')"><i class="fas fa-image"></i> View Image</button>
+    <p class="mt-4"><strong>2. Grant access to your Facebook Page:</strong></p>
+    <a class="step-link" href="https://business.facebook.com/settings/pages" target="_blank"><i class="fas fa-th-large"></i> Page Settings</a>
+    <button class="tip-btn" onclick="showTip('pageTip')"><i class="fas fa-lightbulb"></i> Tip: Page role needed</button>
+    <div style="display: none;" id="pageTip">We need <strong>Advertiser or Admin</strong> role on the Page. This lets us boost posts and run Page-Like campaigns.</div>
+
+    <p class="mt-4"><strong>3. Grant access to your Ad Account:</strong></p>
+    <a class="step-link" href="https://business.facebook.com/settings/ad-accounts" target="_blank"><i class="fas fa-chart-line"></i> Ad Account Settings</a>
+    <button class="tip-btn" onclick="showTip('adTip')"><i class="fas fa-lightbulb"></i> Tip: Ad account level</button>
+    <div style="display: none;" id="adTip">We require <strong>Manage Campaigns</strong> permission. We never request billing permissions.</div>
+
+    <p class="mt-4"><strong>4. Pixel Access (Events Manager):</strong></p>
+    <a class="step-link" href="https://business.facebook.com/events_manager" target="_blank"><i class="fas fa-code"></i> Events Manager</a>
+    <button class="tip-btn" onclick="showTip('pixelTip')"><i class="fas fa-lightbulb"></i> Tip: Pixel permissions</button>
+    <div style="display: none;" id="pixelTip">Assign our partner ID with <strong>Manage Pixels</strong> access so we can install and optimize conversion events.</div>
+
+    <p class="mt-4"><strong>5. Instagram Business Account (if connected to BM):</strong></p>
+    <a class="step-link" href="https://business.facebook.com/settings/instagram-accounts" target="_blank"><i class="fab fa-instagram"></i> Instagram Accounts</a>
+    <button class="tip-btn" onclick="showTip('igTip')"><i class="fas fa-lightbulb"></i> Tip: Instagram access</button>
+    <div style="display: none;" id="igTip">If your Instagram is linked to your Business Manager, please add us as a <strong>Partner</strong> with "Manage Advertisements" permission. If not yet connected, connect it first (Settings → Instagram Accounts).</div>
+  </div>
+
+  <!-- Website & Landing Pages Card (simplified, no platform buttons) -->
+  <div class="card">
+    <h2><i class="fas fa-globe"></i> Website / Landing Page Access</h2>
+    <p>We need access to your website or landing page platform to install tracking pixels (Meta, Google) and optimize conversion paths.</p>
+    <p class="mt-2"><strong>How to provide access:</strong> Add our team email <strong>akram@mobekmedia.site</strong> as an administrator or editor on your platform (WordPress, Shopify, Webflow, Unbounce, Wix, etc.). Alternatively, share a temporary login via a secure password manager (we recommend 1Password).</p>
+    <div class="mt-3 flex items-center gap-3">
+      <input id="emailCopy" value="akram@mobekmedia.site" readonly class="border rounded px-3 py-2 bg-gray-100 flex-1">
+      <button class="copy-btn" onclick="copyToClipboard('emailCopy')">📋 Copy Email</button>
+    </div>
+    <button class="tip-btn mt-3" onclick="showTip('websiteTip')"><i class="fas fa-lightbulb"></i> Tip: What we exactly need</button>
+    <div style="display: none;" id="websiteTip">We need <strong>admin or developer access</strong> to insert Meta Pixel, Conversions API, and custom audiences. Don't worry — we only touch tracking scripts and never modify content/pricing.</div>
+  </div>
+
+  <!-- Creative assets link (integrated with Next button via Formspree) -->
+  <div class="card">
+    <h2><i class="fas fa-photo-video"></i> Creative Assets (Images & Videos)</h2>
+    <p>Please share a link to your product photos, videos, and any brand assets (Google Drive, Dropbox, OneDrive, or shared folder).</p>
+    <form id="creativeForm" action="https://formspree.io/f/xanbqzjl" method="POST" class="mt-3">
+      <input type="hidden" name="_subject" value="New Creative Assets Link from Client">
+      <input type="url" name="creative-link" id="creativeLink" class="form-input" placeholder="e.g., https://drive.google.com/... or https://dropbox.com/..." required>
+      <div class="text-sm text-gray-500 mt-2">We'll use these visuals to create high-converting ad creatives.</div>
+    </form>
+    <button class="tip-btn mt-3" onclick="showTip('creativeTip')"><i class="fas fa-lightbulb"></i> Tip: Best practices</button>
+    <div style="display: none;" id="creativeTip">Include lifestyle images, before/after kitchen shots, and short demo videos (15-30 sec). High resolution preferred. Folders organized by product category help us work faster.</div>
+  </div>
+
+  <!-- Navigation Buttons: Previous, Next (Next submits creative form + proceeds) -->
+  <div class="nav-buttons">
+    <a href="index.html" class="btn-primary"><i class="fas fa-arrow-left"></i> Previous</a>
+    <button id="nextBtn" class="btn-primary">Next <i class="fas fa-arrow-right"></i></button>
+  </div>
 </div>
 
-<div class="card">
-  <h2><i class="fas fa-globe"></i> Website & Landing Pages</h2>
-  <p>Please grant us access to your website or landing page platform.</p>
-  <button class="image-btn" onclick="openImage('website.jpg')"><i class="fas fa-image"></i> View Image</button>
-  <p><strong>Select your platform:</strong></p>
-  <a class="step-link" href="https://wordpress.com/" target="_blank">WordPress</a>
-  <a class="step-link" href="https://webflow.com/dashboard" target="_blank">Webflow</a>
-  <a class="step-link" href="https://unbounce.com/" target="_blank">Unbounce</a>
-  <a class="step-link" href="https://www.wix.com/dashboard" target="_blank">Wix</a>
-  <a class="step-link" href="https://www.shopify.com/admin" target="_blank">Shopify</a>
-  <p style="margin-top: 15px;">Alternatively, send your access details to:</p>
-  <input id="emailCopy" value="akram@mobekmedia.site" readonly>
-  <button class="copy-btn" onclick="copyToClipboard('emailCopy')">📋 Copy Email</button>
-</div>
+<!-- Tawk.to Integration (same as audience) -->
+<script type="text/javascript">
+  var Tawk_API = Tawk_API || {}, Tawk_LoadStart = new Date();
+  (function(){
+    var s1 = document.createElement("script"), s0 = document.getElementsByTagName("script")[0];
+    s1.async = true;
+    s1.src = 'https://embed.tawk.to/688f950a8ba539192ec9c8c9/1j1odsd19';
+    s1.charset = 'UTF-8';
+    s1.setAttribute('crossorigin','*');
+    s0.parentNode.insertBefore(s1, s0);
+  })();
+</script>
 
-<!-- أزرار التنقل -->
-<div class="nav-buttons">
-  <a href="index.html"><i class="fas fa-arrow-left"></i> Previous</a>
-  <a href="audience.html">Next <i class="fas fa-arrow-right"></i></a>
-</div>
-
-<div id="imagePopup" class="popup" onclick="closeImage()">
+<!-- Popup overlay for text tips -->
+<div id="tipPopup" class="popup" onclick="closeTip()">
   <div class="popup-content" onclick="event.stopPropagation()">
-    <button class="close-btn" onclick="closeImage()">✕</button>
-    <img id="popupImage" src="" alt="Step Image">
+    <button class="close-btn" onclick="closeTip()">✕</button>
+    <div id="tipMessage" style="font-size: 1rem; line-height: 1.5;"></div>
   </div>
 </div>
 
 <script>
-function copyToClipboard(id) {
-  const copyText = document.getElementById(id);
-  navigator.clipboard.writeText(copyText.value);
-  const btn = copyText.nextElementSibling;
-  btn.innerHTML = '✓ Copied!';
-  setTimeout(() => btn.innerHTML = (id === 'emailCopy' ? '📋 Copy Email' : '📋 Copy ID'), 2000);
-}
-function openImage(src) {
-  document.getElementById('popupImage').src = src;
-  document.getElementById('imagePopup').style.display = 'flex';
-}
-function closeImage() {
-  document.getElementById('imagePopup').style.display = 'none';
-}
-</script>
+  // Copy to clipboard function (enhanced)
+  function copyToClipboard(id) {
+    const copyText = document.getElementById(id);
+    copyText.select();
+    copyText.setSelectionRange(0, 99999);
+    navigator.clipboard.writeText(copyText.value);
+    const btn = copyText.nextElementSibling; 
+    if (btn && btn.classList.contains('copy-btn')) {
+      const originalText = btn.innerHTML;
+      btn.innerHTML = '✓ Copied!';
+      setTimeout(() => { btn.innerHTML = originalText; }, 2000);
+    }
+  }
 
+  // Show tip from hidden div content
+  function showTip(tipId) {
+    const contentDiv = document.getElementById(tipId);
+    if (contentDiv) {
+      const message = contentDiv.innerHTML;
+      document.getElementById('tipMessage').innerHTML = message;
+      document.getElementById('tipPopup').style.display = 'flex';
+    }
+  }
+
+  function closeTip() {
+    document.getElementById('tipPopup').style.display = 'none';
+  }
+
+  // Next button: submit creative link to Formspree, then redirect to audience page
+  document.getElementById('nextBtn').addEventListener('click', function(e) {
+    e.preventDefault();
+    const creativeInput = document.getElementById('creativeLink');
+    const creativeLink = creativeInput.value.trim();
+    if (!creativeLink) {
+      alert('Please provide a link to your creative assets (photos/videos). This helps us prepare effective ads.');
+      creativeInput.focus();
+      return;
+    }
+    // Validate URL format loosely
+    if (!creativeLink.match(/^https?:\/\//i)) {
+      alert('Please enter a valid URL starting with http:// or https://');
+      creativeInput.focus();
+      return;
+    }
+    // Submit the form via fetch to Formspree (to avoid page reload)
+    const form = document.getElementById('creativeForm');
+    const formData = new FormData(form);
+    fetch(form.action, {
+      method: 'POST',
+      body: formData,
+      headers: { 'Accept': 'application/json' }
+    }).then(response => {
+      if (response.ok) {
+        // After successful submission, redirect to audience page
+        window.location.href = 'audience.html';
+      } else {
+        alert('There was an issue submitting the link. Please try again or contact support.');
+      }
+    }).catch(error => {
+      console.error('Error:', error);
+      alert('Network error. Please check your connection and try again.');
+    });
+  });
+</script>
 </body>
 </html>
